@@ -1,4 +1,4 @@
-**Tips creaciÛn de proyecto Maven Clean Architecture**  ![Clean Architecture](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
+**Tips creaci√≥n de proyecto Maven Clean Architecture**  ![Clean Architecture](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
   
 **Proyecto Raiz**
 
@@ -8,13 +8,13 @@
 
   
 **Proyecto Core**  
- - Crear un Modulo Maven en blanco, sin arquetipo. El asistente precargar· el group-id y dem·s, del proyecto Raiz
+ - Crear un Modulo Maven en blanco, sin arquetipo. El asistente precargar√° el group-id y dem√°s, del proyecto Raiz
  - Nombrarlo de acuerdo a la capa del proyecto. Por ejemplo: *Vuelos-Core*
  - Agregar las dependencias de Junit y Mockito ***[Nota: Agregar la carpeta con la clase MockitoExtension en src/test, para poder usar Mockito con Junit5]***
 
   
 **Proyecto Boundaries**  
- - Crear un Modulo Maven en blanco, sin arquetipo. El asistente precargar· el group-id y dem·s, del proyecto Raiz
+ - Crear un Modulo Maven en blanco, sin arquetipo. El asistente precargar√° el group-id y dem√°s, del proyecto Raiz
  - Nombrarlo de acuerdo a la capa del proyecto. Por ejemplo: *Vuelos-Boundaries* 
  - Agregar las dependencias de spring boot, spring data y spring web, y las que se necesiten.
- - Agregarle al pom.xml, junto en al artifactID, la etiqueta `<packaging>war</packaging>`
+ - Agregarle al pom.xml, junto a artifactID, la etiqueta `<packaging>war</packaging>`
