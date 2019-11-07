@@ -16,7 +16,8 @@ public class ClienteUnitTest {
 
     @Test
     void instanciarClienteClienteSinDocumentoClienteInstanciaIncorrecta() {
-        Assertions.assertThrows(ClienteSinDocumentoException.class, ()-> Cliente.factoryCliente(1,"Juan Asis","Timoteo Gordillo 43","Centro","39400500") );
+        Barrio elBarrio=Barrio.factoryBarrio(1,"Centro");
+        Assertions.assertThrows(ClienteSinDocumentoException.class, ()-> Cliente.factoryCliente(1,"Juan Asis","Timoteo Gordillo 43",elBarrio.getNombre(),"39400500") );
     }
 
 
