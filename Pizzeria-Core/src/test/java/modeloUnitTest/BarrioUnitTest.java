@@ -17,7 +17,7 @@ public class BarrioUnitTest {
 
         @Test
         void instanciarBarrio_BarrioSinNombreBarrio_InstanciaIncorrecta() {
-            Assertions.assertThrows(BarrioIncompletoException.class, ()-> Barrio.factoryBarrio(1,"Centro") );
+            Assertions.assertThrows(BarrioIncompletoException.class, ()-> Barrio.factoryBarrio(1,"") );
         }
 
         @Test
