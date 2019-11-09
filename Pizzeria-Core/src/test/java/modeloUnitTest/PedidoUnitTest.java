@@ -55,4 +55,15 @@ public class PedidoUnitTest {
 
 
     }
+    @Test
+    void instanciarPedido_PedidoItemsIgualACero_InstanciaIncorrecta() throws BarrioIncompletoException, ClienteIncompletoException, PizzaIncompletaException {
+        Barrio elBarrio=Barrio.factoryBarrio(1,"Centro");
+        Cliente elCliente=Cliente.factoryCliente(1,"Juan Asis","Timoteo Gordillo 43",elBarrio,"39400500");
+        ArrayList<Pizza> items = new ArrayList<Pizza>();
+        LocalDateTime fecha = LocalDateTime.now();
+        Assertions.assertThrows(PedidoIncompletoExcpetion.class, ()-> Pedido.factoryPedido(1,elCliente, fecha, items, null ));
+
+
+
+    }
 }
