@@ -2,8 +2,10 @@ package repositorio;
 
 import modelo.Cliente;
 
+import java.util.ArrayList;
+
 public interface IRepositorioObtenerClientePorNombre {
 
-    Cliente obtenerClientePorNombre(String nombreCliente);
+    ArrayList<Cliente> obtenerClientePorNombre(String nombreCliente);
 
 }

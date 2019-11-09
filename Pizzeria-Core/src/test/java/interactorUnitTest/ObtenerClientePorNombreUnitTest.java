@@ -27,7 +27,7 @@ public class ObtenerClientePorNombreUnitTest {
     }
 
     @Test
-    public void obtenerCLientePorNombre_listaClientes_clienteCorrecto(){
+    public void obtenerCLientePorNombre_listaClientes_devuelveListaCorrecto(){
 
         //REVISAR, NO FUNCIONA
         when(iRepositorioObtenerClientePorNombre.obtenerClientePorNombre("Jose")).thenReturn(misClientes);
@@ -35,6 +35,8 @@ public class ObtenerClientePorNombreUnitTest {
         ArrayList<Cliente> lista = obtenerClientePorNombreUseCase.obtenerPilotoPorNombre("Jose");
 
         Assertions.assertEquals(1, lista.size());
+
+
     }
 
     private ArrayList<Cliente> factoryListaClientes() throws ClienteIncompletoException, BarrioIncompletoException {

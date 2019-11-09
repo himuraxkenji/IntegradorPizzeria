@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ObtenerClientePorNombreUseCase {
 
-    private IRepositorioObtenerClientePorNombre iRepositorioObtenerClientePorNombre;
+    public IRepositorioObtenerClientePorNombre iRepositorioObtenerClientePorNombre;
 
     public ObtenerClientePorNombreUseCase(IRepositorioObtenerClientePorNombre iRepositorioObtenerClientePorNombre){
 
@@ -17,7 +17,7 @@ public class ObtenerClientePorNombreUseCase {
 
     public ArrayList<Cliente> obtenerPilotoPorNombre(String nombreCliente){
 
-        return (ArrayList<Cliente>) obtenerPilotoPorNombre(nombreCliente);
+        return obtenerPilotoPorNombre(nombreCliente);
     }
 
 
