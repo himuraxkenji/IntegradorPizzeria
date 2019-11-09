@@ -1,7 +1,6 @@
 package interactor;
 
 import excepciones.ClienteExisteException;
-import excepciones.ClienteIncompletoException;
 import modelo.Cliente;
 import repositorio.IRepositorioCrearCliente;
 
@@ -14,7 +13,7 @@ public class CrearClienteUseCase {
     }
 
     public boolean existeCliente(Cliente elCliente){
-        return crearClienteGateway.buscarClientePorNombre(elCliente.getNombre()) != null;
+        return crearClienteGateway.buscarClientePorDocumento(elCliente.getNombre()) != null;
     }
 
     public boolean CrearCliente(Cliente elCliente) throws ClienteExisteException {

@@ -36,8 +36,8 @@ public class CrearClienteUnitTest {
     @Test
     public void crearCliente_ClienteExiste_ClienteExisteException() throws BarrioIncompletoException, ClienteIncompletoException {
         Barrio elBarrio = Barrio.factoryBarrio(1, "Centro");
-        Cliente clienteNuevo = Cliente.factoryCliente(1, "Juan Asis", "Timoteo Gordillo 43", elBarrio, "39400500");
-        when(crearClienteGatway.buscarClientePorNombre("Juan Asis")).thenReturn(Cliente.factoryCliente(2, "Juan Asis", "Timoteo Gordillo 43", elBarrio, "39400500"));
+        Cliente clienteNuevo = Cliente.factoryCliente(1, "39400500", "Timoteo Gordillo 43", elBarrio, "39400500");
+        when(crearClienteGatway.buscarClientePorDocumento("39400500")).thenReturn(Cliente.factoryCliente(2, "Juan Asis", "Timoteo Gordillo 43", elBarrio, "39400500"));
         CrearClienteUseCase crearClienteUseCase = new CrearClienteUseCase(crearClienteGatway);
         Assertions.assertThrows(ClienteExisteException.class, () -> crearClienteUseCase.CrearCliente(clienteNuevo));
     }

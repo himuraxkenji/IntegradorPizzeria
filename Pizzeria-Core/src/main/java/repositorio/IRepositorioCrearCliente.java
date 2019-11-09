@@ -6,6 +6,6 @@ public interface IRepositorioCrearCliente {
 
     boolean guardar(Cliente nuevoCliente);
 
-    Cliente buscarClientePorNombre(String nombreCliente);
+    Cliente buscarClientePorDocumento(String documentoCliente);
 
 }
