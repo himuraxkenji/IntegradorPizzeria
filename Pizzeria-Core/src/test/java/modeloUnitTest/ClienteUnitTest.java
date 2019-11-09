@@ -12,14 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ClienteUnitTest {
     @Test
-    void instanciarClienteClienteCompletoInstanciaCorrecta() throws BarrioIncompletoException, ClienteIncompletoException {
+    void instanciar_ClienteClienteCompleto_InstanciaCorrecta() throws BarrioIncompletoException, ClienteIncompletoException {
         Barrio elBarrio=Barrio.factoryBarrio(1,"Centro");
         Cliente elCliente= Cliente.factoryCliente(1,"Juan Asis","Timoteo Gordillo 43",elBarrio,"39400500");
         assertNotNull(elCliente);
     }
 
     @Test
-    void instanciarClienteClienteSinDocumentoClienteInstanciaIncorrecta() throws BarrioIncompletoException {
+    void instanciarCliente_ClienteSinDocumento_ClienteInstanciaIncorrecta() throws BarrioIncompletoException {
         Barrio elBarrio=Barrio.factoryBarrio(1,"Centro");
         Assertions.assertThrows(ClienteIncompletoException.class, ()-> Cliente.factoryCliente(1,"Juan Asis","Timoteo Gordillo 43",elBarrio,"") );
     }

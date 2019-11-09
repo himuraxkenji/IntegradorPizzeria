@@ -9,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class BarrioUnitTest {
       @Test
-        void instanciarBarrioBarrioCompletoInstanciaCorrecta() throws BarrioIncompletoException {
+        void instanciarBarrio_BarrioCompleto_InstanciaCorrecta() throws BarrioIncompletoException {
             Barrio elBarrio=Barrio.factoryBarrio(1,"Centro");
             assertNotNull(elBarrio);
         }
 
         @Test
-        void instanciarBarrioBarrioSinNombreBarrioInstanciaIncorrecta() {
+        void instanciarBarrio_BarrioSinNombreBarrio_InstanciaIncorrecta() {
             Assertions.assertThrows(BarrioIncompletoException.class, ()-> Barrio.factoryBarrio(1,"Centro") );
         }
     
