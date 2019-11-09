@@ -9,6 +9,7 @@
         <module name="pizzeria-boundaries" />
         <module name="IntegradorPizzeria" />
         <module name="pizzeria-core" />
+        <module name="pizzeria" />
       </profile>
     </annotationProcessing>
   </component>
