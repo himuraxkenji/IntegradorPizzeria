@@ -4,7 +4,6 @@ package interactorUnitTest;
 import Mockito.MockitoExtension;
 import excepciones.*;
 import interactor.CrearPedidoUseCase;
-import javafx.beans.binding.When;
 import modelo.Barrio;
 import modelo.Cliente;
 import modelo.Pedido;
