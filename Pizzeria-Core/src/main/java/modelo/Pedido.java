@@ -24,7 +24,7 @@ public class Pedido {
     }
 
     public static Pedido factoryPedido(Integer idPedido, Cliente elCliente, LocalDateTime fecha, ArrayList<Pizza> items, Integer numeroPedido) throws PedidoIncompletoExcpetion {
-        if(idPedido== null || elCliente == null || fecha == null || numeroPedido == null) {
+        if(idPedido== null || elCliente == null || fecha == null || numeroPedido == null || items == null || items.size() == 0) {
             throw new PedidoIncompletoExcpetion();
         }else{
             return new Pedido(idPedido, elCliente, fecha, items, numeroPedido);
