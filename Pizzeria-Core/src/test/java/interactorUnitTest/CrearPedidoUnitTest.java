@@ -56,8 +56,10 @@ public class CrearPedidoUnitTest {
        ArrayList<Pizza> items = null;
        Barrio elBarrio=Barrio.factoryBarrio(1,"Centro");
        Cliente elCliente=Cliente.factoryCliente(1,"Rodrigo Alarcon","San Francisco 285",elBarrio,"28131367");
-       Pedido elPedidoBuscado=cargaPedido();
-       when(CrearPedidoGateway.buscarPedidoPorNumero(1)).thenReturn(Pedido.factoryPedido(1,1));
+       Pedido elPedido=cargaPedido();
+       when(CrearPedidoGateway.buscarPedidoPorNumero(1)).thenReturn(Pedido.factoryPedido(1,elCliente, fecha, items, 1));
+       CrearPedidoUseCase crearPedidoUseCase = new CrearPedidoUseCase(CrearPedidoGateway);
+       Assertions.assertThrows(PedidoExisteException.class, () -> crearPedidoUseCase.crearPedido(elPedido));
 
 
     }
