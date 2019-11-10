@@ -3,11 +3,11 @@ package interactor;
 import modelo.Cliente;
 import repositorio.IRepositorioObtenerClientePorNombre;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ObtenerClientePorNombreUseCase {
 
-    public IRepositorioObtenerClientePorNombre iRepositorioObtenerClientePorNombre;
+    private IRepositorioObtenerClientePorNombre iRepositorioObtenerClientePorNombre;
 
     public ObtenerClientePorNombreUseCase(IRepositorioObtenerClientePorNombre iRepositorioObtenerClientePorNombre){
 
@@ -15,9 +15,9 @@ public class ObtenerClientePorNombreUseCase {
     }
 
 
-    public ArrayList<Cliente> obtenerPilotoPorNombre(String nombreCliente){
+    public List<Cliente> obtenerClientePorNombre(String nombreCliente){
 
-        return obtenerPilotoPorNombre(nombreCliente);
+        return (List<Cliente>) iRepositorioObtenerClientePorNombre.obtenerClientePorNombre(nombreCliente);
     }
 
 
