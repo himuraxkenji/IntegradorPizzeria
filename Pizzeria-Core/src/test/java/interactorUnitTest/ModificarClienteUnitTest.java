@@ -4,6 +4,7 @@ import Mockito.MockitoExtension;
 import excepciones.BarrioIncompletoException;
 import excepciones.ClienteExisteException;
 import excepciones.ClienteIncompletoException;
+import interactor.ModificarClienteUseCase;
 import modelo.Barrio;
 import modelo.Cliente;
 import org.junit.jupiter.api.Assertions;
@@ -12,6 +13,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import repositorio.IRepositorioModificarCliente;
 
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 public class ModificarClienteUnitTest {
 
@@ -19,7 +22,7 @@ public class ModificarClienteUnitTest {
     IRepositorioModificarCliente modificarClienteRepo;
 
     @Test
-    public void modificarCliente_NoHayConflictosClienteExistente_GuardaCorrectamente() throws BarrioIncompletoException, ClienteIncompletoException {
+    public void modificarCliente_NoHayConflictosClienteExistente_GuardaCorrectamente() throws BarrioIncompletoException, ClienteIncompletoException, ClienteExisteException {
         Barrio barrioCliente = Barrio.factoryBarrio(1,"80 Lotes");
 
         Cliente clienteDatosNuevos = Cliente.factoryCliente(1, "Renzo", "Presidente Alambour", barrioCliente, "48.365.236");
@@ -43,7 +46,7 @@ public class ModificarClienteUnitTest {
     }
 
     @Test
-    public void modificarCliente_ConflictoClienteExistentePeroEsElMismo_GuardaCorrectamente() throws BarrioIncompletoException, ClienteIncompletoException {
+    public void modificarCliente_ConflictoClienteExistentePeroEsElMismo_GuardaCorrectamente() throws BarrioIncompletoException, ClienteIncompletoException, ClienteExisteException {
         Barrio barrioCliente = Barrio.factoryBarrio(1,"80 Lotes");
 
         Cliente clienteExistente = Cliente.factoryCliente(1, "Santiago", "San Roman", barrioCliente, "48.365.236");
@@ -55,6 +58,4 @@ public class ModificarClienteUnitTest {
         boolean resultadoActualizarCliente = modificarClienteUseCase.actualizarCliente(clienteDatosNuevos);
         Assertions.assertTrue(resultadoActualizarCliente);
     }
-
-
 }
