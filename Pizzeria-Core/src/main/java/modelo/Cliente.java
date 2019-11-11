@@ -49,4 +49,15 @@ public class Cliente {
     public String getDocumento() {
         return documento;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cliente)) return false;
+
+        Cliente cliente = (Cliente) o;
+
+        return getDocumento().equals(cliente.getDocumento());
+    }
+
 }
