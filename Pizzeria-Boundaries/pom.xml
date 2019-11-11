@@ -2,20 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>ar.edu.undec</groupId>
         <artifactId>Pizzeria</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>Pizzeria-Boundaries</artifactId>
+    <groupId>ar.edu.undec</groupId>
+    <artifactId>pizzeria-boundaries</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
-    <name>Pizzeria-Boundaries</name>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+    <name>pizzeria-boundaries</name>
+    <description>Demo project for Spring Boot</description>
 
     <dependencyManagement>
         <dependencies>
@@ -29,6 +27,10 @@
         </dependencies>
     </dependencyManagement>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -40,8 +42,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -53,12 +55,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>ar.edu.undec</groupId>
-            <artifactId>Pizzeria-Core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
 
         <!--Dependencias para las pruebas de integracion de Service-->
