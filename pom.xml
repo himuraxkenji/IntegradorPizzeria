@@ -6,11 +6,11 @@
     <groupId>ar.edu.undec</groupId>
     <artifactId>pizzeria</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>pom</packaging>
 
     <modules>
-        <module>Pizzeria-Core</module>
-        <module>Pizzeria-Boundaries</module>
+        <module>pizzeria-core</module>
+        <module>pizzeria-boundaries</module>
 
     </modules>
 
