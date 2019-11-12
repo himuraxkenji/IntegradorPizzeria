@@ -1,5 +1,6 @@
 package interactor;
 
+import excepciones.FechaIncorrectaException;
 import modelo.Cliente;
 import modelo.Pedido;
 import repositorio.IRepositorioObtenerPedidoPorClienteYFecha;
@@ -14,7 +15,9 @@ public class ObtenerPedidoPorClienteYFecha {
        this.repositorio = repositorio;
     }
 
-    public ArrayList<Pedido> obtenerPedidoPorClienteYFecha(Cliente cliente, LocalDate fecha) {
-        return repositorio.obtenerPedidoPorClienteYFecha(cliente,fecha);
+    public ArrayList<Pedido> obtenerPedidoPorClienteYFecha(Cliente cliente, LocalDate fecha) throws FechaIncorrectaException {
+        if(fecha.isAfter(LocalDate.now()))
+            throw new FechaIncorrectaException();
+        else return repositorio.obtenerPedidoPorClienteYFecha(cliente,fecha);
     }
 }
