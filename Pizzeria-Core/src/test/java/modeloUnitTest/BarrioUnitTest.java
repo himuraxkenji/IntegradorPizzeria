@@ -20,12 +20,7 @@ public class BarrioUnitTest {
             Assertions.assertThrows(BarrioIncompletoException.class, ()-> Barrio.factoryBarrio(1,"") );
         }
 
-        @Test
-        void modificarBarrio_CambiarNombre_ModificacionCorrecta() throws BarrioIncompletoException {
-            Barrio elBarrio=Barrio.factoryBarrio(1,"Centro");
-            elBarrio.setNombre("Independencia");
-            assertEquals("Independencia" , elBarrio.getNombre());
-        }
+       
     
     
     
