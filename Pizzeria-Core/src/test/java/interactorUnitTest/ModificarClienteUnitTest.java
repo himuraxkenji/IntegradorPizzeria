@@ -26,7 +26,7 @@ public class ModificarClienteUnitTest {
         Barrio barrioCliente = Barrio.factoryBarrio(1,"80 Lotes");
 
         Cliente clienteDatosNuevos = Cliente.factoryCliente(1, "Renzo", "Presidente Alambour", barrioCliente, "48.365.236");
-        when(modificarClienteRepo.findByDni("48.365.236")).thenReturn(null);
+        when(modificarClienteRepo.findByDocumento("48.365.236")).thenReturn(null);
         when(modificarClienteRepo.actualizar(clienteDatosNuevos)).thenReturn(true);
 
         ModificarClienteUseCase modificarClienteUseCase = new ModificarClienteUseCase(modificarClienteRepo);
@@ -40,7 +40,7 @@ public class ModificarClienteUnitTest {
 
         Cliente clienteExistente = Cliente.factoryCliente(1, "Santiago", "San Roman", barrioCliente, "48.365.236");
         Cliente clienteDatosNuevos = Cliente.factoryCliente(2, "Renzo", "Presidente Alambour", barrioCliente, "48.365.236");
-        when(modificarClienteRepo.findByDni("48.365.236")).thenReturn(clienteExistente);
+        when(modificarClienteRepo.findByDocumento("48.365.236")).thenReturn(clienteExistente);
         ModificarClienteUseCase modificarClienteUseCase = new ModificarClienteUseCase(modificarClienteRepo);
         Assertions.assertThrows(ClienteExisteException.class, ()-> modificarClienteUseCase.actualizarCliente(clienteDatosNuevos));
     }
@@ -51,7 +51,7 @@ public class ModificarClienteUnitTest {
 
         Cliente clienteExistente = Cliente.factoryCliente(1, "Santiago", "San Roman", barrioCliente, "48.365.236");
         Cliente clienteDatosNuevos = Cliente.factoryCliente(1, "Renzo", "Presidente Alambour", barrioCliente, "48.365.236");
-        when(modificarClienteRepo.findByDni("48.365.236")).thenReturn(clienteExistente);
+        when(modificarClienteRepo.findByDocumento("48.365.236")).thenReturn(clienteExistente);
         when(modificarClienteRepo.actualizar(clienteDatosNuevos)).thenReturn(true);
 
         ModificarClienteUseCase modificarClienteUseCase = new ModificarClienteUseCase(modificarClienteRepo);
