@@ -3,15 +3,13 @@ package ar.edu.undec.pizzeriaboundaries.Data.ModelosEntity;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "clientes")
+@Entity(name = "clientes")
+@SequenceGenerator(name = "seq_clientes", sequenceName = "seq_clientes", initialValue = 1, allocationSize = 1)
 public class ClienteEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_clientes")
     private Integer id_cliente;
-
-
 
     private String nombre;
     private String direccion;
