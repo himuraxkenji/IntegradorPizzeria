@@ -5,19 +5,21 @@ import repositorio.IRepositorioObtenerClientePorNombre;
 
 import java.util.List;
 
-public class ObtenerClientePorNombreUseCase {
+public class ObtenerClientePorNombreUseCase implements IRepositorioObtenerClientePorNombre{
 
-    private IRepositorioObtenerClientePorNombre iRepositorioObtenerClientePorNombre;
+    private IRepositorioObtenerClientePorNombre obtenerClientePorNombreGateway;
 
     public ObtenerClientePorNombreUseCase(IRepositorioObtenerClientePorNombre iRepositorioObtenerClientePorNombre){
 
-        this.iRepositorioObtenerClientePorNombre = iRepositorioObtenerClientePorNombre;
+        this.obtenerClientePorNombreGateway = iRepositorioObtenerClientePorNombre;
     }
 
+    @Override
+    public List<Cliente> obtenerClientePorNombre(String nombreCliente) {
 
-    public List<Cliente> obtenerClientePorNombre(String nombreCliente){
+        List<Cliente> nuevaLista = obtenerClientePorNombreGateway.obtenerClientePorNombre(nombreCliente);
 
-        return (List<Cliente>) iRepositorioObtenerClientePorNombre.obtenerClientePorNombre(nombreCliente);
+        return nuevaLista;
     }
 
 
