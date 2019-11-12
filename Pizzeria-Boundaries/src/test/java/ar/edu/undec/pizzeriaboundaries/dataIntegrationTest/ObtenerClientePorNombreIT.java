@@ -12,6 +12,8 @@ import org.springframework.test.context.jdbc.SqlGroup;
 @SpringBootTest
 public class ObtenerClientePorNombreIT {
 
+
+
     @Test
     @SqlGroup({
             @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:obtenerClientePorNombreAntes.sql"),
