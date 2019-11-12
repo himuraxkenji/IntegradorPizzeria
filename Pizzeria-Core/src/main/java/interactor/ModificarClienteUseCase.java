@@ -13,15 +13,16 @@ public class ModificarClienteUseCase {
     }
 
     public Boolean actualizarCliente(Cliente clienteDatosNuevos) throws ClienteExisteException {
-        Cliente clienteAModificar  = modificarClienteRepo.findByDni(clienteDatosNuevos.getDocumento());
+        Cliente clienteAModificar  = modificarClienteRepo.findByDocumento(clienteDatosNuevos.getDocumento());
+
         if(clienteAModificar == null )
             return this.modificarClienteRepo.actualizar(clienteDatosNuevos);
-        else if(clienteAModificar.getIdCliente() != clienteDatosNuevos.getIdCliente())
-            throw new ClienteExisteException();
         else{
-            if (clienteAModificar.getDocumento().equals(clienteDatosNuevos.getDocumento()))
+            if(clienteAModificar.getIdCliente() != clienteDatosNuevos.getIdCliente())
+                throw new ClienteExisteException();
+            else{
                 return this.modificarClienteRepo.actualizar(clienteDatosNuevos);
+            }
         }
-        return false;
     }
 }

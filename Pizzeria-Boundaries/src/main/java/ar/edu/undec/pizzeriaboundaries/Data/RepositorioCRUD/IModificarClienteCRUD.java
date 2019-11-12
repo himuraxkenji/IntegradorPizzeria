@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface IModificarClienteCRUD extends CrudRepository<ClienteEntity, Integer> {
 
-    ClienteEntity findByDocumento(String dni);
+    ClienteEntity findByDocumento(String documento);
 }
