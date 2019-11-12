@@ -5,7 +5,6 @@ import excepciones.ClienteIncompletoException;
 import excepciones.PedidoExisteException;
 import excepciones.PedidoIncompletoExcpetion;
 import excepciones.PizzaIncompletaException;
-import interactor.ModificarClienteUseCase;
 import interactor.ModificarPedidoUseCase;
 import modelo.Barrio;
 import modelo.Cliente;
