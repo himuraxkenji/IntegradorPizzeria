@@ -52,7 +52,11 @@ public class CrearPedidoUnitTest {
     @Test
     public void CrearPedido_PedidoExiste_PedidoExisteException() throws BarrioIncompletoException, PizzaIncompletaException, ClienteIncompletoException, PedidoIncompletoExcpetion {
        LocalDateTime fecha = LocalDateTime.now();
-       ArrayList<Pizza> items = null;
+       ArrayList<Pizza> items = new ArrayList<Pizza>();
+       Pizza laPizza=Pizza.factoryPizza(1,"Especial",270.00f,15);
+       Pizza laSegundaPizza=Pizza.factoryPizza(2,"Comun",200.00f,10);
+       items.add(laPizza);
+       items.add(laSegundaPizza);
        Barrio elBarrio=Barrio.factoryBarrio(1,"Centro");
        Cliente elCliente=Cliente.factoryCliente(1,"Rodrigo Alarcon","San Francisco 285",elBarrio,"28131367");
        Pedido elPedido=cargaPedido();

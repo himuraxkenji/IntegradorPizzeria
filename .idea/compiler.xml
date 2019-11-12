@@ -7,15 +7,22 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="pizzeria-boundaries" />
-        <module name="IntegradorPizzeria" />
         <module name="pizzeria-core" />
-        <module name="pizzeria" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+<<<<<<< Updated upstream
+      <module name="pizzeria-boundaries" target="8" />
+      <module name="pizzeria-core" target="8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="pizzeria-boundaries" options="-parameters" />
     </option>
+=======
+      <module name="Pizzeria-Boundaries" target="8" />
+    </bytecodeTargetLevel>
+>>>>>>> Stashed changes
   </component>
 </project>
