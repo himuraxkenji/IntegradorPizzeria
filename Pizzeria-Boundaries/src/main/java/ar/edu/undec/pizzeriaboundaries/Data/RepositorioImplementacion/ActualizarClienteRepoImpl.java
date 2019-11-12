@@ -14,7 +14,6 @@ public class ActualizarClienteRepoImpl implements IRepositorioModificarCliente {
     @Autowired
     IModificarClienteCRUD modificarClienteCRUD;
 
-
     @Override
     public Boolean actualizar(Cliente cliente) {
         ClienteEntity clienteEntity = new ClienteEntityMapper().mapeoCoreData(cliente);
@@ -23,10 +22,9 @@ public class ActualizarClienteRepoImpl implements IRepositorioModificarCliente {
 
 
     @Override
-    public Cliente findByDni(String dni) {
-        Cliente clienteAModificar = new ClienteEntityMapper().mapeoDataCore(modificarClienteCRUD.findByDocumento(dni));
-        if(clienteAModificar != null)
-            return clienteAModificar;
-        return null;
+    public Cliente findByDocumento(String documento) {
+        Cliente clienteAModificar = new ClienteEntityMapper().mapeoDataCore(modificarClienteCRUD.findByDocumento(documento));
+
+        return clienteAModificar;
     }
 }
