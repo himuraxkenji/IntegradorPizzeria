@@ -4,7 +4,7 @@ import modelo.Cliente;
 
 public interface IRepositorioModificarCliente {
 
-    Cliente findByDni(String dni);
+    Cliente findByDocumento(String documento);
 
     Boolean actualizar(Cliente cliente);
 }
