@@ -20,8 +20,8 @@ public class ClienteEntityMapper {
 
     public Cliente mapeoDataCore(ClienteEntity clienteEntity) {
         try {
-            return Cliente.factoryCliente(clienteEntity.getIdCliente(),clienteEntity.getNombre(),clienteEntity.getDireccion(),Barrio.factoryBarrio(clienteEntity.getBarrio().getId_barrio(), clienteEntity.getBarrio().getNombre()), clienteEntity.getDocumento());
-        } catch (ClienteIncompletoException | BarrioIncompletoException e) {
+            return Cliente.factoryCliente(clienteEntity.getIdCliente(),clienteEntity.getNombre(),clienteEntity.getDireccion(),new BarrioEntityMapper().mapeoDataCore(clienteEntity.getBarrio()), clienteEntity.getDocumento());
+        } catch (ClienteIncompletoException e) {
             e.printStackTrace();
             return null;
         }
