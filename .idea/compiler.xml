@@ -10,19 +10,5 @@
         <module name="pizzeria-core" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-<<<<<<< Updated upstream
-      <module name="pizzeria-boundaries" target="8" />
-      <module name="pizzeria-core" target="8" />
-    </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="pizzeria-boundaries" options="-parameters" />
-    </option>
-=======
-      <module name="Pizzeria-Boundaries" target="8" />
-    </bytecodeTargetLevel>
->>>>>>> Stashed changes
   </component>
 </project>
