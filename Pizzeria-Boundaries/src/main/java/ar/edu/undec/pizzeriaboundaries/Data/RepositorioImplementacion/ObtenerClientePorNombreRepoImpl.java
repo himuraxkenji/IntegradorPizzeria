@@ -1,4 +1,4 @@
-/*package ar.edu.undec.pizzeriaboundaries.Data.RepositorioImplementacion;
+package ar.edu.undec.pizzeriaboundaries.Data.RepositorioImplementacion;
 
 import ar.edu.undec.pizzeriaboundaries.Data.EntityMapper.ClienteEntityMapper;
 import ar.edu.undec.pizzeriaboundaries.Data.ModelosEntity.ClienteEntity;
@@ -20,9 +20,9 @@ public class ObtenerClientePorNombreRepoImpl implements IRepositorioObtenerClien
     @Override
     public List<Cliente> obtenerClientePorNombre(String nombreCliente) {
 
-        List<Cliente> listaClientes = new ArrayList<Cliente>();
+        List<Cliente> listaClientes = new ArrayList<>();
 
-        for (ClienteEntity cliente : iObtenerClientePorNombreCRUD.obtenerClientePorNombre(nombreCliente)) {
+        for (ClienteEntity cliente : iObtenerClientePorNombreCRUD.findByNombre(nombreCliente)) {
 
             Cliente nuevoCliente = new ClienteEntityMapper().mapeoDataCore(cliente);
 
@@ -35,4 +35,3 @@ public class ObtenerClientePorNombreRepoImpl implements IRepositorioObtenerClien
 
 
 }
-*/
