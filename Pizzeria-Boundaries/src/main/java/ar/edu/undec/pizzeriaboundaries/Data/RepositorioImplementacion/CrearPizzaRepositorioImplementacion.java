@@ -24,7 +24,7 @@ public class CrearPizzaRepositorioImplementacion implements IRepositorioCrearPiz
 
     @Override
     public Pizza buscarPizzaPorNombre(String nombrePizza) throws PizzaIncompletaException {
-        Pizza pizzaBuscada = new PizzaEntityMapper().mapeoDataCore(crearPizzaCRUD.buscarPizzaPorNombre(nombrePizza));
+        Pizza pizzaBuscada = new PizzaEntityMapper().mapeoDataCore(crearPizzaCRUD.findByNombre(nombrePizza));
         if(pizzaBuscada!= null)
             return pizzaBuscada;
         return null;

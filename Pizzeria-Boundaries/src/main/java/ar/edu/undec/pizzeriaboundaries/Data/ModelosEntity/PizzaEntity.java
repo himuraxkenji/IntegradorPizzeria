@@ -6,10 +6,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Pizzas")
+@SequenceGenerator(name= "seq_id_pizza", sequenceName = "seq_id_pizza", initialValue = 1, allocationSize =1 )
 public class PizzaEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_id_pizza")
     private Integer idPizza;
     private String nombre;
     private float precio;

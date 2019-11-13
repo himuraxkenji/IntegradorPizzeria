@@ -19,7 +19,7 @@ public class CrearPizzaIT {
     CrearPizzaRepositorioImplementacion CrearPizzaRepo;
 
     @Test
-    void CrearPizza_PizzaNoExiste_GuardadoCorrecto() throws PizzaIncompletaException {
+    public void CrearPizza_PizzaNoExiste_GuardadoCorrecto() throws PizzaIncompletaException {
         Pizza laPizza=Pizza.factoryPizza(1,"Napolitana",250.00f,15);
         boolean resultado = CrearPizzaRepo.guardar(laPizza);
         assertTrue(resultado);
