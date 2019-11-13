@@ -1,4 +1,4 @@
-package ar.edu.undec.pizzeriaboundaries.Data.RepositorioCRUD;
+/*package ar.edu.undec.pizzeriaboundaries.Data.RepositorioCRUD;
 
 import ar.edu.undec.pizzeriaboundaries.Data.ModelosEntity.ClienteEntity;
 import modelo.Cliente;
@@ -11,3 +11,4 @@ public interface IObtenerClientePorNombreCRUD extends CrudRepository<ClienteEnti
     List<ClienteEntity> obtenerClientePorNombre(String nombreCliente);
 
 }
+*/

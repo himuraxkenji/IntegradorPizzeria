@@ -1,2 +1,2 @@
-DELETE * FROM clientes
+DELETE * FROM clientes;
 

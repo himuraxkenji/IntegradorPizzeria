@@ -1,4 +1,4 @@
-package ar.edu.undec.pizzeriaboundaries.Data.RepositorioImplementacion;
+/*package ar.edu.undec.pizzeriaboundaries.Data.RepositorioImplementacion;
 
 import ar.edu.undec.pizzeriaboundaries.Data.EntityMapper.ClienteEntityMapper;
 import ar.edu.undec.pizzeriaboundaries.Data.ModelosEntity.ClienteEntity;
@@ -35,3 +35,4 @@ public class ObtenerClientePorNombreRepoImpl implements IRepositorioObtenerClien
 
 
 }
+*/
