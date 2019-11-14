@@ -16,6 +16,7 @@ import repositorio.IRepositorioCrearPedido;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import static org.mockito.Mockito.when;
 
@@ -26,9 +27,9 @@ public class CrearPedidoUnitTest {
     @Mock
     IRepositorioCrearPedido CrearPedidoGateway;
 
-    private Pedido cargaPedido() throws BarrioIncompletoException, PizzaIncompletaException, ClienteIncompletoException, PedidoIncompletoExcpetion {
+    private Pedido cargaPedido() throws BarrioIncompletoException, PizzaIncompletaException, ClienteIncompletoException, PedidoIncompletoException {
         Barrio elBarrio=Barrio.factoryBarrio(1,"Centro");
-        ArrayList<Pizza> items = new ArrayList<Pizza>();
+        Collection<Pizza> items = new ArrayList<Pizza>();
         Pizza laPizza=Pizza.factoryPizza(1,"Napolitana",250.00f,15);
         Pizza laSegundaPizza=Pizza.factoryPizza(2,"Comun",200.00f,10);
         items.add(laPizza);
@@ -40,7 +41,7 @@ public class CrearPedidoUnitTest {
     }
 
     @Test
-    public void CrearPedido_PedidoNoExiste_GuardadoCorrecto() throws PedidoExisteException, ClienteIncompletoException, PedidoIncompletoExcpetion, BarrioIncompletoException, PizzaIncompletaException {
+    public void CrearPedido_PedidoNoExiste_GuardadoCorrecto() throws PedidoExisteException, ClienteIncompletoException, PedidoIncompletoException, BarrioIncompletoException, PizzaIncompletaException {
         Pedido elPedido = cargaPedido();
         when(CrearPedidoGateway.guardar(elPedido)).thenReturn(true);
         CrearPedidoUseCase crearPedidoUseCase = new CrearPedidoUseCase(CrearPedidoGateway);
@@ -50,7 +51,7 @@ public class CrearPedidoUnitTest {
     }
 
     @Test
-    public void CrearPedido_PedidoExiste_PedidoExisteException() throws BarrioIncompletoException, PizzaIncompletaException, ClienteIncompletoException, PedidoIncompletoExcpetion {
+    public void CrearPedido_PedidoExiste_PedidoExisteException() throws BarrioIncompletoException, PizzaIncompletaException, ClienteIncompletoException, PedidoIncompletoException {
        LocalDateTime fecha = LocalDateTime.now();
        ArrayList<Pizza> items = new ArrayList<Pizza>();
        Pizza laPizza=Pizza.factoryPizza(1,"Especial",270.00f,15);

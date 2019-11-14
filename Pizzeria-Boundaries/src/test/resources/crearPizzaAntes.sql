@@ -1,4 +1,4 @@
 delete from pizzas;
 
-alter SEQUENCE seq_id_pizza restart with 1;
+alter SEQUENCE seq_pizza restart with 1;
 

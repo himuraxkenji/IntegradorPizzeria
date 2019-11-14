@@ -1,10 +1,10 @@
 package modelo;
 
-import excepciones.PedidoIncompletoExcpetion;
+import excepciones.PedidoIncompletoException;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.Collection;
 
 public class Pedido {
 
@@ -12,10 +12,10 @@ public class Pedido {
     private Cliente elCliente;
     private LocalDateTime fecha;
     private Integer numeroPedido;
-    private ArrayList<Pizza> items = new ArrayList<Pizza>();
+    private Collection<Pizza> items;
 
 
-    private Pedido(Integer idPedido, Cliente elCliente, LocalDateTime fecha, ArrayList<Pizza> items, Integer numeroPedido) {
+    private Pedido(Integer idPedido, Cliente elCliente, LocalDateTime fecha, Collection<Pizza> items, Integer numeroPedido) {
         this.idPedido = idPedido;
         this.elCliente = elCliente;
         this.fecha = fecha;
@@ -23,9 +23,9 @@ public class Pedido {
         this.items = items;
     }
 
-    public static Pedido factoryPedido(Integer idPedido, Cliente elCliente, LocalDateTime fecha, ArrayList<Pizza> items, Integer numeroPedido) throws PedidoIncompletoExcpetion {
-        if(idPedido== null || elCliente == null || fecha == null || numeroPedido == null || items == null || items.size() == 0) {
-            throw new PedidoIncompletoExcpetion();
+    public static Pedido factoryPedido(Integer idPedido, Cliente elCliente, LocalDateTime fecha, Collection<Pizza> items, Integer numeroPedido) throws PedidoIncompletoException {
+        if(elCliente == null || fecha == null || numeroPedido == null || items == null || items.size() == 0) {
+            throw new PedidoIncompletoException();
         }else{
             return new Pedido(idPedido, elCliente, fecha, items, numeroPedido);
         }
@@ -48,7 +48,7 @@ public class Pedido {
         return numeroPedido;
     }
 
-    public ArrayList<Pizza> getItems() {
+    public Collection<Pizza> getItems() {
         return items;
     }
 }

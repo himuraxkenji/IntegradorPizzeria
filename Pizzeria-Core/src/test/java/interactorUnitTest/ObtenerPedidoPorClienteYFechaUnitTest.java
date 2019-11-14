@@ -2,7 +2,6 @@ package interactorUnitTest;
 
 import Mockito.MockitoExtension;
 import excepciones.*;
-import interactor.CrearClienteUseCase;
 import interactor.ObtenerPedidoPorClienteYFecha;
 import modelo.Barrio;
 import modelo.Cliente;
@@ -12,8 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.stubbing.OngoingStubbing;
-import repositorio.IRepositorioCrearCliente;
 import repositorio.IRepositorioObtenerPedidoPorClienteYFecha;
 
 import java.time.LocalDate;
@@ -28,7 +25,7 @@ public class ObtenerPedidoPorClienteYFechaUnitTest {
     @Mock
     IRepositorioObtenerPedidoPorClienteYFecha repositorio;
     @Test
-    public void obtenerPedidoPorClienteYFecha_ClienteYFechaCorrectos_DevolverPedidosCorrectamente() throws ClienteIncompletoException, BarrioIncompletoException, PedidoIncompletoExcpetion, PizzaIncompletaException, FechaIncorrectaException{
+    public void obtenerPedidoPorClienteYFecha_ClienteYFechaCorrectos_DevolverPedidosCorrectamente() throws ClienteIncompletoException, BarrioIncompletoException, PedidoIncompletoException, PizzaIncompletaException, FechaIncorrectaException{
         Barrio barrio = Barrio.factoryBarrio(2, "Nueva Italia");
         Cliente cliente = Cliente.factoryCliente(1,"Federico", "San Juan 570", barrio,
                 "37492933");

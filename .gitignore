@@ -2,3 +2,5 @@
 *.iml
 
 Pizzeria-Boundaries/src/test/resources/application\.properties
+
+Pizzeria-Core/target/
