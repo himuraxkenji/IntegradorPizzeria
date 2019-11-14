@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>pizzeria-core</module>
-        <module>pizzeria-boundaries</module>
+        <module>Pizzeria-Core</module>
+        <module>Pizzeria-Boundaries</module>
 
     </modules>
 

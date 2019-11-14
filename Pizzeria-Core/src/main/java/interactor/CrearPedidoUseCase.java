@@ -1,6 +1,8 @@
 package interactor;
 
 import excepciones.PedidoExisteException;
+import excepciones.PedidoIncompletoException;
+import excepciones.PizzaIncompletaException;
 import modelo.Pedido;
 import repositorio.IRepositorioCrearPedido;
 
@@ -12,11 +14,11 @@ public class CrearPedidoUseCase {
         this.CrearPedidoGateWay = crearPedidoGateWay;
     }
 
-    public boolean existePedido(Pedido elPedido){
+    public boolean existePedido(Pedido elPedido) throws PedidoIncompletoException, PizzaIncompletaException {
         return CrearPedidoGateWay.buscarPedidoPorNumero(elPedido.getNumeroPedido()) != null;
     }
 
-    public boolean crearPedido(Pedido elPedido) throws PedidoExisteException {
+    public boolean crearPedido(Pedido elPedido) throws PedidoExisteException, PedidoIncompletoException, PizzaIncompletaException {
         if(!existePedido(elPedido)){
             return this.CrearPedidoGateWay.guardar(elPedido);
         }

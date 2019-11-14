@@ -3,7 +3,7 @@ import Mockito.MockitoExtension;
 import excepciones.BarrioIncompletoException;
 import excepciones.ClienteIncompletoException;
 import excepciones.PedidoExisteException;
-import excepciones.PedidoIncompletoExcpetion;
+import excepciones.PedidoIncompletoException;
 import excepciones.PizzaIncompletaException;
 import interactor.ModificarPedidoUseCase;
 import modelo.Barrio;
@@ -28,7 +28,7 @@ public class ModificarPedidoUnitTest {
 	@Mock
 	  IRepositorioModificarPedido modificarPedidoRepo;
 	@Test
-	public void modificarPedido_PedidoExistente_GuardaCambiosCorrectamente() throws BarrioIncompletoException, PizzaIncompletaException, ClienteIncompletoException, PedidoIncompletoExcpetion, PedidoExisteException {
+	public void modificarPedido_PedidoExistente_GuardaCambiosCorrectamente() throws BarrioIncompletoException, PizzaIncompletaException, ClienteIncompletoException, PedidoIncompletoException, PedidoExisteException {
 		  Barrio elBarrio=Barrio.factoryBarrio(1,"Centro");
 	        ArrayList<Pizza> items = new ArrayList<Pizza>();
 	        Pizza laPizza=Pizza.factoryPizza(1,"Napolitana",250.00f,15);
