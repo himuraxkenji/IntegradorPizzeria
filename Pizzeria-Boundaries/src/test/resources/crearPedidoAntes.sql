@@ -1,5 +1,8 @@
-delete from pizzas;
+
+delete from pizzas_por_pedido;
+
 delete from pedidos;
+delete from pizzas;
 delete from clientes;
 delete from barrios;
 

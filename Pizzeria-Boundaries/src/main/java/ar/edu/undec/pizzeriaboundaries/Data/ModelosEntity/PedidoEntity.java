@@ -16,15 +16,15 @@ public class PedidoEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pedidos")
     private Integer idPedido;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @PrimaryKeyJoinColumn
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name= "id_Cliente")
     private ClienteEntity elCliente;
 
     private LocalDateTime fecha;
     private Integer numeroPedido;
 
-    @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "pizzasPorPedido")
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "pizzasPorPedido", joinColumns = {@JoinColumn(name="idPedido")}, inverseJoinColumns = { @JoinColumn(name="idPizza")})
     private Collection<PizzaEntity> items;
 
     public PedidoEntity() {
