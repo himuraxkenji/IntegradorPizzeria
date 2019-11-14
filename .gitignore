@@ -3,4 +3,8 @@
 
 Pizzeria-Boundaries/src/test/resources/application\.properties
 
+Pizzeria-Boundaries/src/main/resources/
+
+Pizzeria-Boundaries/src/test/resources/
+
 Pizzeria-Core/target/
