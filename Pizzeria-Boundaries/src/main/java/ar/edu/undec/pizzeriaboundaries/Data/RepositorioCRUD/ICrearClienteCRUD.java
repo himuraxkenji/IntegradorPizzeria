@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ICrearClienteCRUD extends CrudRepository<ClienteEntity, Integer> {
 
-    boolean save(Cliente cliente);
-
+    
 
 }
