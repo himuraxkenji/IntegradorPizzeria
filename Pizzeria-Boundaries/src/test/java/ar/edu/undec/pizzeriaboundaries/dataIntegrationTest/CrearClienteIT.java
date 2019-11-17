@@ -1,6 +1,7 @@
 package ar.edu.undec.pizzeriaboundaries.dataIntegrationTest;
 
 
+import ar.edu.undec.pizzeriaboundaries.Data.RepositorioImplementacion.CrearClienteRepoImpl;
 import excepciones.BarrioIncompletoException;
 import excepciones.ClienteIncompletoException;
 import modelo.Barrio;
@@ -25,7 +26,7 @@ public class CrearClienteIT {
 
         Barrio miBarrio = Barrio.factoryBarrio(1, "Castro y Bazan");
         Cliente cliente = Cliente.factoryCliente(1, "Jose Soria", "Castro y Bazan", miBarrio, "39300672");
-        boolean respuesta = crearClienteRepoImpl.save(cliente);
+        boolean respuesta = crearClienteRepoImpl.(cliente);
 
         assertTrue(respuesta);
 
