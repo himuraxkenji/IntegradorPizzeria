@@ -9,22 +9,21 @@ import org.springframework.stereotype.Service;
 import repositorio.IRepositorioModificarCliente;
 
 @Service
-public class ActualizarClienteRepoImpl implements IRepositorioModificarCliente {
+public class ModificarClienteRepoImpl implements IRepositorioModificarCliente {
 
     @Autowired
-    IModificarClienteCRUD modificarClienteCRUD;
+    IModificarClienteCRUD iModificarClienteCRUD;
 
     @Override
     public Boolean actualizar(Cliente cliente) {
         ClienteEntity clienteEntity = new ClienteEntityMapper().mapeoCoreData(cliente);
-        return modificarClienteCRUD.save(clienteEntity) != null;
+        return iModificarClienteCRUD.save(clienteEntity) != null;
     }
 
 
     @Override
     public Cliente findByDocumento(String documento) {
-        Cliente clienteAModificar = new ClienteEntityMapper().mapeoDataCore(modificarClienteCRUD.findByDocumento(documento));
 
-        return clienteAModificar;
+        return new ClienteEntityMapper().mapeoDataCore(iModificarClienteCRUD.findByDocumento(documento));
     }
 }
