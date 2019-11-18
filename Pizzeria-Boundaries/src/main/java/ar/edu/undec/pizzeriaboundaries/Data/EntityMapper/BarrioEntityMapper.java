@@ -12,6 +12,7 @@ public class BarrioEntityMapper {
         barrioEntity.setNombre(barrioCore.getNombre());
         return barrioEntity;
     }
+
     public Barrio mapeoDataCore(BarrioEntity barrioEntity) {
         try {
             return Barrio.factoryBarrio(barrioEntity.getId_barrio(), barrioEntity.getNombre());

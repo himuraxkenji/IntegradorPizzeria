@@ -2,7 +2,7 @@ package repositorio;
 
 import modelo.Barrio;
 
-public interface IRespositorioCrearBarrio {
+public interface IRepositorioCrearBarrio {
 
     boolean guardar(Barrio elBarrio);
 

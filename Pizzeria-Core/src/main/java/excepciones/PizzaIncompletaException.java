@@ -1,4 +1,7 @@
 package excepciones;
 
-public class PizzaIncompletaException extends Throwable {
+public class PizzaIncompletaException extends Exception {
+    public PizzaIncompletaException(){
+        super();
+    }
 }

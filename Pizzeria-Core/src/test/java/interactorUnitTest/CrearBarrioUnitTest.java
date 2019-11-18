@@ -10,16 +10,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import repositorio.IRespositorioCrearBarrio;
+import repositorio.IRepositorioCrearBarrio;
 
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-
 public class CrearBarrioUnitTest {
 
     @Mock
-    IRespositorioCrearBarrio CrearBarrioGateWay;
+    IRepositorioCrearBarrio CrearBarrioGateWay;
 
     @Test
     public void CrearBarrio_BarrioNoExiste_GuardadoCorrecto() throws BarrioIncompletoException, BarrioExisteException {

@@ -30,7 +30,7 @@ public class ModificarClienteUnitTest {
         when(modificarClienteRepo.actualizar(clienteDatosNuevos)).thenReturn(true);
 
         ModificarClienteUseCase modificarClienteUseCase = new ModificarClienteUseCase(modificarClienteRepo);
-        boolean resultadoActualizarCliente = modificarClienteUseCase.actualizarCliente(clienteDatosNuevos);
+        boolean resultadoActualizarCliente = modificarClienteUseCase.modificarCliente(clienteDatosNuevos);
         Assertions.assertTrue(resultadoActualizarCliente);
     }
 
@@ -42,7 +42,7 @@ public class ModificarClienteUnitTest {
         Cliente clienteDatosNuevos = Cliente.factoryCliente(2, "Renzo", "Presidente Alambour", barrioCliente, "48.365.236");
         when(modificarClienteRepo.findByDocumento("48.365.236")).thenReturn(clienteExistente);
         ModificarClienteUseCase modificarClienteUseCase = new ModificarClienteUseCase(modificarClienteRepo);
-        Assertions.assertThrows(ClienteExisteException.class, ()-> modificarClienteUseCase.actualizarCliente(clienteDatosNuevos));
+        Assertions.assertThrows(ClienteExisteException.class, ()-> modificarClienteUseCase.modificarCliente(clienteDatosNuevos));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class ModificarClienteUnitTest {
         when(modificarClienteRepo.actualizar(clienteDatosNuevos)).thenReturn(true);
 
         ModificarClienteUseCase modificarClienteUseCase = new ModificarClienteUseCase(modificarClienteRepo);
-        boolean resultadoActualizarCliente = modificarClienteUseCase.actualizarCliente(clienteDatosNuevos);
+        boolean resultadoActualizarCliente = modificarClienteUseCase.modificarCliente(clienteDatosNuevos);
         Assertions.assertTrue(resultadoActualizarCliente);
     }
 }

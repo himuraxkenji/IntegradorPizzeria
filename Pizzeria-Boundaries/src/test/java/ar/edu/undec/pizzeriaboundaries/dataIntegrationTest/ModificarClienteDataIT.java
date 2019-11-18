@@ -1,7 +1,7 @@
 package ar.edu.undec.pizzeriaboundaries.dataIntegrationTest;
 
 
-import ar.edu.undec.pizzeriaboundaries.Data.RepositorioImplementacion.ActualizarClienteRepoImpl;
+import ar.edu.undec.pizzeriaboundaries.Data.RepositorioImplementacion.ModificarClienteRepoImpl;
 
 import excepciones.BarrioIncompletoException;
 import excepciones.ClienteIncompletoException;
@@ -18,10 +18,9 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-
-public class ModificarClienteIT {
+public class ModificarClienteDataIT {
     @Autowired
-    ActualizarClienteRepoImpl actualizarClienteRepo;
+    ModificarClienteRepoImpl actualizarClienteRepo;
 
    @SqlGroup({
             @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:actualizarClienteAntes.sql"),
