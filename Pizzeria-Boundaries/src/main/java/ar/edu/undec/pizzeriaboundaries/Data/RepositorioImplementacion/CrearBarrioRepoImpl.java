@@ -17,14 +17,14 @@ public class CrearBarrioRepoImpl implements IRepositorioCrearBarrio {
     @Override
     public boolean guardar(Barrio barrio) {
         BarrioEntity barrioEntity = new BarrioEntityMapper().mapeoCoreData(barrio);
-        return this.iCrearBarrioCRUD.save(barrioEntity) != null;
+        return iCrearBarrioCRUD.save(barrioEntity).getId_barrio() != null;
     }
 
     @Override
     public Barrio buscarBarrioPorNombre(String nombreBarrio) {
-        Barrio barrio = new BarrioEntityMapper().mapeoDataCore(iCrearBarrioCRUD.findByNombre(nombreBarrio));
-        if (barrio != null)
-            return barrio;
+        BarrioEntity barrioEntity = iCrearBarrioCRUD.findByNombre(nombreBarrio);
+        if (barrioEntity != null)
+            return new BarrioEntityMapper().mapeoDataCore(barrioEntity);
         return null;
     }
 }

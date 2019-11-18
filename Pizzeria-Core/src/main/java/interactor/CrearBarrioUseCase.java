@@ -15,13 +15,11 @@ public class CrearBarrioUseCase implements ICrearBarrioInput {
 
     @Override
     public boolean crearBarrio(Barrio elBarrio) throws BarrioExisteException {
-        if(existeBarrio(elBarrio)){
-            throw new BarrioExisteException();
-        }
-        return this.crearBarrioGateway.guardar(elBarrio);
+        if(crearBarrioGateway.buscarBarrioPorNombre(elBarrio.getNombre()) == null)
+            return this.crearBarrioGateway.guardar(elBarrio);
+
+        throw new BarrioExisteException();
+
     }
 
-    public boolean existeBarrio(Barrio elBarrio){
-        return crearBarrioGateway.buscarBarrioPorNombre(elBarrio.getNombre()) != null;
-    }
 }

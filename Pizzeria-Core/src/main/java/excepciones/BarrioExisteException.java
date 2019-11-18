@@ -1,4 +1,7 @@
 package excepciones;
 
-public class BarrioExisteException extends Throwable {
+public class BarrioExisteException extends Exception {
+    public BarrioExisteException(){
+        super();
+    }
 }
