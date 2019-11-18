@@ -26,19 +26,19 @@ public class ModificarClienteServiceIT {
 
     @Test
     public void modificarCliente_ClienteModificado_DevuelveTrue() throws Exception, ClienteExisteException {
-        ClienteDTO clienteAModificar = new ClienteDTO(1,"Juan", "Siempre Viva", new BarrioDTO(1, "Altos de Chilecito"), "12312312" );
+        ClienteDTO clienteAModificar = new ClienteDTO(1,"Juan", "Siempre Viva", "12312312",new BarrioDTO(1, "Altos de Chilecito") );
         when(modificarClienteInput.modificarCliente(any(Cliente.class))).thenReturn(true);
         ModificarClienteController modificarClienteController = new ModificarClienteController(modificarClienteInput);
-        assertEquals(modificarClienteController.modificarCliente(clienteAModificar).getStatusCodeValue(), HttpStatus.OK);
+        assertEquals(modificarClienteController.modificarCliente(clienteAModificar).getStatusCodeValue(), org.apache.http.HttpStatus.SC_OK);
     }
 
 
     @Test
     public void modificarCliente_ClienteExiste_DevuelveFalse() throws Exception, ClienteExisteException {
-        ClienteDTO clienteAModificar = new ClienteDTO(1,"Juan", "Siempre Viva", new BarrioDTO(1, "Altos de Chilecito"), "12312312" );
-        when(modificarClienteInput.modificarCliente(any(Cliente.class))).thenReturn(new ClienteExisteException());
+        ClienteDTO clienteAModificar = new ClienteDTO(1,"Juan", "Siempre Viva",  "12312312", new BarrioDTO(1, "Altos de Chilecito") );
+        when(modificarClienteInput.modificarCliente(any(Cliente.class))).thenThrow(new ClienteExisteException());
         ModificarClienteController modificarClienteController = new ModificarClienteController(modificarClienteInput);
-        assertEquals(modificarClienteController.modificarCliente(clienteAModificar).getStatusCodeValue(), HttpStatus.FAILED_DEPENDENCY);
+        assertEquals(modificarClienteController.modificarCliente(clienteAModificar).getStatusCodeValue(), org.apache.http.HttpStatus.SC_PRECONDITION_FAILED);
     }
 
 
