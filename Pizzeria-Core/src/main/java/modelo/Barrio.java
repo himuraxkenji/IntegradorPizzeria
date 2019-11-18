@@ -32,4 +32,15 @@ public class Barrio {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Barrio)) return false;
+
+        Barrio barrio = (Barrio) o;
+
+        return getNombre().equals(barrio.getNombre());
+    }
+
 }
