@@ -13,4 +13,11 @@ public class BarrioDTOMapper {
             return null;
         }
     }
+
+    public BarrioDTO mapeoCoreDTO(Barrio elBarrio) {
+
+        BarrioDTO barrioDTO = new BarrioDTO(elBarrio.getIdBarrio(), elBarrio.getNombre());
+
+        return barrioDTO;
+    }
 }

@@ -1,5 +1,6 @@
 package ar.edu.undec.pizzeriaboundaries.Service.ServiceMapper;
 
+import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.BarrioDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.ClienteDTO;
 import excepciones.ClienteIncompletoException;
 import modelo.Barrio;
@@ -16,5 +17,14 @@ public class ClienteDTOMapper {
             e.printStackTrace();
             return null;
         }
+    }
+
+
+    public ClienteDTO mapetoCoreDTO(Cliente cliente) {
+
+        BarrioDTO barrioDTO = new BarrioDTOMapper().mapeoCoreDTO(cliente.getElBarrio());
+        ClienteDTO clienteDTO = new ClienteDTO(cliente.getIdCliente(), cliente.getNombre(), cliente.getDireccion(), cliente.getDocumento(), barrioDTO);
+
+        return clienteDTO;
     }
 }

@@ -1,10 +1,11 @@
 package interactor;
 
 import excepciones.ClienteExisteException;
+import input.ICrearClienteInput;
 import modelo.Cliente;
 import repositorio.IRepositorioCrearCliente;
 
-public class CrearClienteUseCase {
+public class CrearClienteUseCase implements ICrearClienteInput {
 
     private IRepositorioCrearCliente crearClienteGateway;
 
@@ -16,7 +17,7 @@ public class CrearClienteUseCase {
         return crearClienteGateway.buscarClientePorDocumento(elCliente.getNombre()) != null;
     }
 
-    public boolean CrearCliente(Cliente elCliente) throws ClienteExisteException {
+    public boolean crearCliente(Cliente elCliente) throws ClienteExisteException {
         if(!existeCliente(elCliente)) {
             return this.crearClienteGateway.guardar(elCliente);
         }
