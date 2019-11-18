@@ -1,7 +1,11 @@
 package input;
 
+import modelo.Cliente;
+
+import java.util.List;
+
 public interface IObtenerClientePorNombreInput {
 
-    boolean obtenerClientePorNombre(String nombreCliente);
+    List<Cliente> obtenerClientePorNombre(String nombreCliente);
 
 }
