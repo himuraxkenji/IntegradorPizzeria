@@ -1,10 +1,11 @@
 package interactor;
 
 import excepciones.BarrioExisteException;
+import input.ICrearBarrioInput;
 import modelo.Barrio;
 import repositorio.IRespositorioCrearBarrio;
 
-public class CrearBarrioUseCase {
+public class CrearBarrioUseCase implements ICrearBarrioInput {
 
     private IRespositorioCrearBarrio crearBarrioGateway;
 
@@ -12,14 +13,15 @@ public class CrearBarrioUseCase {
         this.crearBarrioGateway = crearBarrioGateway;
     }
 
-    public boolean existeBarrio(Barrio elBarrio){
-        return crearBarrioGateway.buscarBarrioPorNombre(elBarrio.getNombre()) != null;
+    @Override
+    public boolean crearBarrio(Barrio elBarrio) throws BarrioExisteException {
+        if(existeBarrio(elBarrio)){
+            throw new BarrioExisteException();
+        }
+        return this.crearBarrioGateway.guardar(elBarrio);
     }
 
-    public boolean crearBarrio(Barrio elBarrio) throws BarrioExisteException {
-        if(!existeBarrio(elBarrio)){
-            return this.crearBarrioGateway.guardar(elBarrio);
-        }
-        throw new BarrioExisteException();
+    public boolean existeBarrio(Barrio elBarrio){
+        return crearBarrioGateway.buscarBarrioPorNombre(elBarrio.getNombre()) != null;
     }
 }
