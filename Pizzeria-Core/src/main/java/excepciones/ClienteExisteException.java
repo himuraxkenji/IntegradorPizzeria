@@ -1,4 +1,8 @@
 package excepciones;
 
-public class ClienteExisteException extends Throwable {
+public class ClienteExisteException extends Exception {
+
+    public ClienteExisteException(){
+        super();
+    }
 }
