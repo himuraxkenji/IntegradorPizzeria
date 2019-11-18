@@ -1,4 +1,4 @@
-/**package interactorUnitTest;
+package interactorUnitTest;
 
 import Mockito.MockitoExtension;
 import excepciones.*;
@@ -126,15 +126,22 @@ public class ObtenerPizzasMasVendidasEntreFechasUnitTest {
         LocalDate fechaInicio = LocalDate.of(2019,11,8);
         LocalDate fechaFin = LocalDate.of(2019, 11, 10);
 
-        LinkedHashMap<Integer, ArrayList<String>> pizzasMasVendidas = new LinkedHashMap();
+        Map<Pizza, Integer> pizzasMasVendidas= new LinkedHashMap<>();
+
+        pizzasMasVendidas.put(pizza1, 7);
+        pizzasMasVendidas.put(pizza2, 7);
+        pizzasMasVendidas.put(pizza3, 5);
+        pizzasMasVendidas.put(pizza4, 4);
+
+
 
 
         when(obtenerPedidosGateWay.obtenerPedidos()).thenReturn(losPedidosCargados);
-        when(obtenerPizzasMasVendidasEntreFechasGateWay.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin)).thenReturn(pizzasMasVendidas);
+        when(obtenerPizzasMasVendidasEntreFechasGateWay.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin)).thenReturn((LinkedHashMap<Pizza, Integer>) pizzasMasVendidas);
         ObtenerPizzasMasVendidasEntreFechasUseCase obtenerPizzasMasVendidasEntreFechas = new ObtenerPizzasMasVendidasEntreFechasUseCase(obtenerPizzasMasVendidasEntreFechasGateWay, obtenerPedidosGateWay);
         Assertions.assertEquals(6, obtenerPedidosGateWay.obtenerPedidos().size());
-        System.out.println(pizzasMasVendidas);
-        Assertions.assertEquals( "Comun", obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(7));
+        Assertions.assertEquals( 7, obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(pizza1));
+        Assertions.assertEquals( 7, obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(pizza2));
 
 
 
@@ -142,4 +149,3 @@ public class ObtenerPizzasMasVendidasEntreFechasUnitTest {
 
 
 }
-**/
