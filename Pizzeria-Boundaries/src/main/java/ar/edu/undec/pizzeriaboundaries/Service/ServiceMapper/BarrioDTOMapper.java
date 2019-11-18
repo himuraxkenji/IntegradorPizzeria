@@ -5,6 +5,7 @@ import excepciones.BarrioIncompletoException;
 import modelo.Barrio;
 
 public class BarrioDTOMapper {
+
     public Barrio mapeoDTOCore(BarrioDTO barrioDTO) {
         try {
             return Barrio.factoryBarrio(barrioDTO.getIdBarrio(), barrioDTO.getNombre());

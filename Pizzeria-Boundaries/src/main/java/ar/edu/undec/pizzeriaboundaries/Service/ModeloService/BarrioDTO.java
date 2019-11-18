@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BarrioDTO {
 
-    @JsonProperty("idBarrio")
-    private int idBarrio;
+    @JsonProperty("id")
+    private Integer idBarrio;
 
     @JsonProperty("nombre")
     private String nombre;
@@ -16,11 +16,11 @@ public class BarrioDTO {
         this.nombre = nombre;
     }
 
-    public int getIdBarrio() {
+    public Integer getIdBarrio() {
         return idBarrio;
     }
 
-    public void setIdBarrio(int idBarrio) {
+    public void setIdBarrio(Integer idBarrio) {
         this.idBarrio = idBarrio;
     }
 
