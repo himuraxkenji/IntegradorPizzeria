@@ -3,13 +3,13 @@ package interactor;
 import excepciones.BarrioExisteException;
 import input.ICrearBarrioInput;
 import modelo.Barrio;
-import repositorio.IRespositorioCrearBarrio;
+import repositorio.IRepositorioCrearBarrio;
 
 public class CrearBarrioUseCase implements ICrearBarrioInput {
 
-    private IRespositorioCrearBarrio crearBarrioGateway;
+    private IRepositorioCrearBarrio crearBarrioGateway;
 
-    public CrearBarrioUseCase(IRespositorioCrearBarrio crearBarrioGateway) {
+    public CrearBarrioUseCase(IRepositorioCrearBarrio crearBarrioGateway) {
         this.crearBarrioGateway = crearBarrioGateway;
     }
 
