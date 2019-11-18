@@ -33,8 +33,6 @@ public class CrearClienteIT {
     @Test
     public void crearCliente_clienteNoExistente_creadoCorrectamente() throws BarrioIncompletoException, ClienteIncompletoException {
 
-
-
         Barrio miBarrio = Barrio.factoryBarrio(1, "Castro y Bazan");
         Cliente cliente = Cliente.factoryCliente(1, "Jose Soria", "Castro y Bazan", miBarrio, "39300672");
         boolean respuesta = crearClienteRepoImpl.guardar(cliente);

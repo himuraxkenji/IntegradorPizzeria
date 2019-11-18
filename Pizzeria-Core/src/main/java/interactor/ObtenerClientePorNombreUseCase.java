@@ -1,11 +1,12 @@
 package interactor;
 
+import input.IObtenerClientePorNombreInput;
 import modelo.Cliente;
 import repositorio.IRepositorioObtenerClientePorNombre;
 
 import java.util.List;
 
-public class ObtenerClientePorNombreUseCase implements IRepositorioObtenerClientePorNombre{
+public class ObtenerClientePorNombreUseCase implements IObtenerClientePorNombreInput {
 
     private IRepositorioObtenerClientePorNombre obtenerClientePorNombreGateway;
 
@@ -14,10 +15,10 @@ public class ObtenerClientePorNombreUseCase implements IRepositorioObtenerClient
         this.obtenerClientePorNombreGateway = iRepositorioObtenerClientePorNombre;
     }
 
-    @Override
+
     public List<Cliente> obtenerClientePorNombre(String nombreCliente) {
 
-        List<Cliente> nuevaLista = obtenerClientePorNombreGateway.obtenerClientePorNombre(nombreCliente);
+        List<Cliente> nuevaLista = (List<Cliente>) obtenerClientePorNombreGateway.obtenerClientePorNombre(nombreCliente);
 
         return nuevaLista;
     }

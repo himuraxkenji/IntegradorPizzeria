@@ -29,7 +29,7 @@ public class CrearClienteUnitTest {
         Cliente clienteNuevo= Cliente.factoryCliente(1,"Juan Asis","Timoteo Gordillo 43",elBarrio,"39400500");
         when(crearClienteGatway.guardar(clienteNuevo)).thenReturn(true);
         CrearClienteUseCase crearClienteUseCase = new CrearClienteUseCase(crearClienteGatway);
-        boolean resultado = crearClienteUseCase.CrearCliente(clienteNuevo);
+        boolean resultado = crearClienteUseCase.crearCliente(clienteNuevo);
         Assertions.assertTrue(resultado);
     }
 
@@ -39,7 +39,7 @@ public class CrearClienteUnitTest {
         Cliente clienteNuevo = Cliente.factoryCliente(1, "39400500", "Timoteo Gordillo 43", elBarrio, "39400500");
         when(crearClienteGatway.buscarClientePorDocumento("39400500")).thenReturn(Cliente.factoryCliente(2, "Juan Asis", "Timoteo Gordillo 43", elBarrio, "39400500"));
         CrearClienteUseCase crearClienteUseCase = new CrearClienteUseCase(crearClienteGatway);
-        Assertions.assertThrows(ClienteExisteException.class, () -> crearClienteUseCase.CrearCliente(clienteNuevo));
+        Assertions.assertThrows(ClienteExisteException.class, () -> crearClienteUseCase.crearCliente(clienteNuevo));
     }
 
 }
