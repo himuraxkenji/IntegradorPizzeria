@@ -15,10 +15,10 @@ public class PizzaDTO {
     private float precio;
 
     @JsonProperty("tiempoPreparacion")
-    private String tiempoPreparacion;
+    private Integer tiempoPreparacion;
 
 
-    public PizzaDTO(@JsonProperty("id") Integer id, @JsonProperty("nombre") String nombre, @JsonProperty("precio") float precio, @JsonProperty("tiempoPreparacion") String tiempoPreparacion){
+    public PizzaDTO(@JsonProperty("id") Integer id, @JsonProperty("nombre") String nombre, @JsonProperty("precio") float precio, @JsonProperty("tiempoPreparacion") Integer tiempoPreparacion){
 
         this.idPizza = id;
         this.nombre = nombre;
@@ -50,11 +50,11 @@ public class PizzaDTO {
         this.precio = precio;
     }
 
-    public String getTiempoPreparacion() {
+    public Integer getTiempoPreparacion() {
         return tiempoPreparacion;
     }
 
-    public void setTiempoPreparacion(String tiempoPreparacion) {
+    public void setTiempoPreparacion(Integer tiempoPreparacion) {
         this.tiempoPreparacion = tiempoPreparacion;
     }
 }

@@ -1,5 +1,6 @@
 package ar.edu.undec.pizzeriaboundaries.controllerIntegrationTest;
 
+import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PizzaDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ServiceMapper.PizzaDTOMapper;
 import excepciones.PizzaExisteException;
 import excepciones.PizzaIncompletaException;
@@ -26,7 +27,7 @@ public class ModificarPizzaIT {
     @Test
     public void modificarPizza_pizzaModificada_devuelveTrue() throws PizzaIncompletaException, PizzaExisteException {
 
-        PizzaDTOMapper pizzaActualizada = new PizzaDTOMapper(1, "Muzzarella", 200.0f, 25);
+        PizzaDTO pizzaActualizada = new PizzaDTO(1, "Muzzarella", 200.0f, 25);
         when(iModificarPizzaInput.modificarPizza(any(Pizza.class))).thenReturn(true);
         ModificarPizzaController modificarPizzaController = new ModificarPizzaController(iModificarPizzaInput);
         assertEquals(modificarPizzaController.modificarPizza(pizzaActualizada).getStatusCodeValue(), org.apache.http.HttpStatus.SC_OK);

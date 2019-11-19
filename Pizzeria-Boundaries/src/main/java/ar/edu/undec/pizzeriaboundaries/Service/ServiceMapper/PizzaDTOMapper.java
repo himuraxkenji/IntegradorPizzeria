@@ -1,5 +1,6 @@
 package ar.edu.undec.pizzeriaboundaries.Service.ServiceMapper;
 
+import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PizzaDTO;
 import excepciones.PizzaIncompletaException;
 import modelo.Pizza;
 
@@ -7,8 +8,7 @@ public class PizzaDTOMapper {
 
     public Pizza mapeoDTOCore(PizzaDTO pizzaDTO){
         try {
-
-            return Pizza.factoryPizza(barrioDTO.getIdPizza(), barrioDTO.getNombre(), barrioDTO.getPrecio(), barrioDTO.getTiempoPrepareacion());
+            return Pizza.factoryPizza(pizzaDTO.getIdPizza(), pizzaDTO.getNombre(), pizzaDTO.getPrecio(), pizzaDTO.getTiempoPreparacion());
         }catch (PizzaIncompletaException ex){
             ex.printStackTrace();
             return null;
