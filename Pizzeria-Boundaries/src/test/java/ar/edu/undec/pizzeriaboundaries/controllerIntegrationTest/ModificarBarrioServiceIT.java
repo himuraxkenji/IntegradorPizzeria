@@ -1,5 +1,6 @@
 package ar.edu.undec.pizzeriaboundaries.controllerIntegrationTest;
 
+import ar.edu.undec.pizzeriaboundaries.Service.Controller.ModificarBarrioController;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.BarrioDTO;
 import excepciones.BarrioExisteException;
 import input.IModificarBarrioInput;
