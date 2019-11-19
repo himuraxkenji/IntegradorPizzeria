@@ -18,7 +18,7 @@ import static org.junit.Assert.assertTrue;
 public class ModificarPizzaIT {
 
     @Autowired
-    ModificarPizzaRepoImpl modificarPizzaRepo;
+    private ModificarPizzaRepoImpl modificarPizzaRepo;
 
     @SqlGroup({
             @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:actualizarPizzaAntes.sql"),

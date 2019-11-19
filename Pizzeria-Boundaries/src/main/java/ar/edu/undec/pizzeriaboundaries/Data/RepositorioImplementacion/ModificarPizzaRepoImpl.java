@@ -6,8 +6,10 @@ import ar.edu.undec.pizzeriaboundaries.Data.RepositorioCRUD.IModificarPizzaCRUD;
 import excepciones.PizzaIncompletaException;
 import modelo.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import repositorio.IRepositorioModificarPizza;
 
+@Service
 public class ModificarPizzaRepoImpl implements IRepositorioModificarPizza {
 
     @Autowired

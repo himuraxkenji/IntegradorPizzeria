@@ -1,1 +1,1 @@
-DELETE FROM Pizzas;
+DELETE FROM pizzas;

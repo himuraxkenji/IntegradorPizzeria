@@ -1,11 +1,10 @@
-DELETE FROM Pizzas;
+delete from pizzas;
+alter sequence seq_id_pizza restart with 1;
 
-ALTER SEQUENCE seq_pizzas restart with 1;
-
-INSERT INTO Pizzas VALUE (nextval('seq_pizzas'), 'Napolitana', 150.0, 12);
-INSERT INTO Pizzas VALUE (nextval('seq_pizzas'), 'Muzzarella', 180.0, 15);
-INSERT INTO Pizzas VALUE (nextval('seq_pizzas'), 'Fugazzeta', 200.0, 20);
-INSERT INTO Pizzas VALUE (nextval('seq_pizzas'), 'Especial', 120.0, 10);
+insert into pizzas values(nextval('seq_id_pizza'), 'Napolitana', 120.0, 15);
+insert into pizzas values(nextval('seq_id_pizza'), 'Muzzarella', 200.0, 18);
+insert into pizzas values(nextval('seq_id_pizza'), 'Fugazzeta', 230.0, 20);
+insert into pizzas values(nextval('seq_id_pizza'), 'Especial', 250.0, 15);
 
 
 

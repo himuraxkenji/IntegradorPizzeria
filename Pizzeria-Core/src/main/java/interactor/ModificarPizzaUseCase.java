@@ -1,6 +1,7 @@
 package interactor;
 
 import excepciones.PizzaExisteException;
+import excepciones.PizzaIncompletaException;
 import modelo.Pizza;
 import repositorio.IRepositorioModificarPizza;
 
@@ -13,7 +14,7 @@ public class ModificarPizzaUseCase {
         this.iRepositorioModificarPizza = iRepositorioModificarPizza;
     }
 
-    public boolean modificarPizza(Pizza pizzaNueva) throws PizzaExisteException {
+    public boolean modificarPizza(Pizza pizzaNueva) throws PizzaExisteException, PizzaIncompletaException {
 
         Pizza pizzaAModificar = iRepositorioModificarPizza.findByNombrePizza(pizzaNueva.getNombre());
 
