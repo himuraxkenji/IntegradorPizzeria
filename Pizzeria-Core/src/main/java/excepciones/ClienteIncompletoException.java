@@ -1,4 +1,4 @@
 package excepciones;
 
-public class ClienteIncompletoException extends Exception {
+public class ClienteIncompletoException extends Throwable {
 }

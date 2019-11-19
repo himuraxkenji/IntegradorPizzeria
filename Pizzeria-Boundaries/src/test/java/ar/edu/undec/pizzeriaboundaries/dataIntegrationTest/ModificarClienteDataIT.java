@@ -18,14 +18,15 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@SqlGroup({
+        @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:actualizarClienteAntes.sql"),
+        @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:actualizarClienteDespues.sql")
+})
 public class ModificarClienteDataIT {
     @Autowired
     ModificarClienteRepoImpl actualizarClienteRepo;
 
-    @SqlGroup({
-            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:actualizarClienteAntes.sql"),
-            @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:actualizarClienteDespues.sql")
-    })
+
     @Test
     public void actualizarCliente_ClienteGuardado_devuelveTrue() throws BarrioIncompletoException, ClienteIncompletoException {
         Barrio barrio = Barrio.factoryBarrio(1, "Altos de Chilecito");
