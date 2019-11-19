@@ -2,10 +2,11 @@ package interactor;
 
 import excepciones.PizzaExisteException;
 import excepciones.PizzaIncompletaException;
+import input.IModificarPizzaInput;
 import modelo.Pizza;
 import repositorio.IRepositorioModificarPizza;
 
-public class ModificarPizzaUseCase {
+public class ModificarPizzaUseCase implements IModificarPizzaInput {
 
     private IRepositorioModificarPizza iRepositorioModificarPizza;
 
