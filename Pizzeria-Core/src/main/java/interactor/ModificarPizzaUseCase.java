@@ -13,24 +13,25 @@ public class ModificarPizzaUseCase {
         this.iRepositorioModificarPizza = iRepositorioModificarPizza;
     }
 
-    public boolean modificarPizza(Pizza pizza) throws PizzaExisteException {
+    public boolean modificarPizza(Pizza pizzaNueva) throws PizzaExisteException {
 
-        Pizza nuevaPizza = iRepositorioModificarPizza.findByNombrePizza(pizza.getNombre());
+        Pizza pizzaAModificar = iRepositorioModificarPizza.findByNombrePizza(pizzaNueva.getNombre());
 
-        if(nuevaPizza == null){
+        if(pizzaAModificar == null){
 
-            return this.iRepositorioModificarPizza.actualizarPizza(nuevaPizza);
+            return this.iRepositorioModificarPizza.actualizarPizza(pizzaNueva);
 
         }else {
-            if(nuevaPizza.getIdPizza() == pizza.getIdPizza()){
-                return this.iRepositorioModificarPizza.actualizarPizza(nuevaPizza);
-            }else{
-
+            if(pizzaAModificar.getIdPizza() != pizzaNueva.getIdPizza()){
                 throw new PizzaExisteException();
+            }else{
+                if(pizzaAModificar.getNombre().equals(pizzaNueva.getNombre())){
+                    return this.iRepositorioModificarPizza.actualizarPizza(pizzaNueva);
+                }
             }
 
         }
-
+        return false;
     }
 
 
