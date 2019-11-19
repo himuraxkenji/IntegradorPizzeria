@@ -22,7 +22,7 @@ public class ModificarClienteDataIT {
     @Autowired
     ModificarClienteRepoImpl actualizarClienteRepo;
 
-   @SqlGroup({
+    @SqlGroup({
             @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:actualizarClienteAntes.sql"),
             @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:actualizarClienteDespues.sql")
     })
