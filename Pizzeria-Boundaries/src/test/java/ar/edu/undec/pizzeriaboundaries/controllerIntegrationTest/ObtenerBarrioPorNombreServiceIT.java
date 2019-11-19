@@ -2,7 +2,7 @@ package ar.edu.undec.pizzeriaboundaries.controllerIntegrationTest;
 
 import ar.edu.undec.pizzeriaboundaries.Service.Controller.ObtenerBarrioPorNombreController;
 import excepciones.BarrioIncompletoException;
-import interactor.IObtenerBarrioPorNombreInput;
+import input.IObtenerBarrioPorNombreInput;
 import modelo.Barrio;
 import org.apache.http.HttpStatus;
 import org.junit.Test;

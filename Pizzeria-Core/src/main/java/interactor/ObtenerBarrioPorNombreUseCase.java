@@ -1,5 +1,6 @@
 package interactor;
 
+import input.IObtenerBarrioPorNombreInput;
 import modelo.Barrio;
 import repositorio.IObtenerBarrioPorNombre;
 
@@ -15,6 +16,6 @@ public class ObtenerBarrioPorNombreUseCase implements IObtenerBarrioPorNombreInp
 
     @Override
     public List<Barrio> obtenerBarrioPorNombre(String nombre) {
-        return (List<Barrio>) obtenerBarrioPorNombre.obtenerBarrioPorNombre(nombre);
+        return obtenerBarrioPorNombre.obtenerBarrioPorNombre(nombre);
     }
 }
