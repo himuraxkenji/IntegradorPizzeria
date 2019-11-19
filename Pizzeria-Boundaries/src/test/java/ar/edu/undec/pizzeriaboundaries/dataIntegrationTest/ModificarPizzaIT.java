@@ -1,5 +1,6 @@
 package ar.edu.undec.pizzeriaboundaries.dataIntegrationTest;
 
+import ar.edu.undec.pizzeriaboundaries.Data.RepositorioImplementacion.ModificarPizzaRepoImpl;
 import excepciones.PizzaIncompletaException;
 import modelo.Pizza;
 import org.junit.Test;
@@ -29,7 +30,7 @@ public class ModificarPizzaIT {
 
         Pizza pizza = Pizza.factoryPizza(1, "Napolitana", 250.00f, 15);
 
-        boolean respuesta = modificarPizzaRepo.actualizar(pizza);
+        boolean respuesta = modificarPizzaRepo.actualizarPizza(pizza);
 
         assertTrue(respuesta);
 
