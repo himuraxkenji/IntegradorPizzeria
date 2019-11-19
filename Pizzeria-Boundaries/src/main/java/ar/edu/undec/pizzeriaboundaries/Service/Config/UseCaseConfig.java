@@ -1,11 +1,14 @@
 package ar.edu.undec.pizzeriaboundaries.Service.Config;
 
+import interactor.CrearBarrioUseCase;
+import interactor.CrearClienteUseCase;
 import interactor.ModificarClienteUseCase;
 import interactor.ObtenerClientePorNombreUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import repositorio.IRepositorioCrearBarrio;
+import repositorio.IRepositorioCrearCliente;
 import repositorio.IRepositorioModificarCliente;
 import repositorio.IRepositorioObtenerClientePorNombre;
 
@@ -29,13 +32,9 @@ public class UseCaseConfig {
     public ModificarClienteUseCase modificarClienteUseCase(){
         return new ModificarClienteUseCase(iRepositorioModificarCliente);
     }
-    @Bean
-    public CrearBarrioUseCase crearClienteUseCase(){
-        return new CrearBarrioUseCase(iRepositorioCrearBarrio);
-    }
 
-    public ObtenerClientePorNombreUseCase obtenerClientePorNombreUseCase(){
     @Bean
+    public ObtenerClientePorNombreUseCase obtenerClientePorNombreUseCase(){
         return new ObtenerClientePorNombreUseCase(iRepositorioObtenerClientePorNombre);
     }
 
@@ -43,4 +42,7 @@ public class UseCaseConfig {
     public CrearClienteUseCase crearClienteUseCase(){
         return new CrearClienteUseCase(iRepositorioCrearCliente);
     }
+
+    @Bean
+    public CrearBarrioUseCase crearBarrioUseCase(){ return new CrearBarrioUseCase(iRepositorioCrearBarrio);}
 }
