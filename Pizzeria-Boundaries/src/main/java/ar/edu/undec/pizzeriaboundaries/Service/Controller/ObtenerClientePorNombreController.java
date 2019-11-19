@@ -1,4 +1,4 @@
-/*package ar.edu.undec.pizzeriaboundaries.Service.Controller;
+package ar.edu.undec.pizzeriaboundaries.Service.Controller;
 
 
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.ClienteDTO;
@@ -31,15 +31,14 @@ public class ObtenerClientePorNombreController {
 
             List<ClienteDTO> misClientes = new ArrayList<>();
             this.iObtenerClientePorNombreInput.obtenerClientePorNombre(nombre).forEach(cliente -> misClientes.add(new ClienteDTOMapper().mapetoCoreDTO(cliente)));
-            if(misClientes.isEmpty()) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            if(misClientes.isEmpty()) return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
             return ResponseEntity.status(HttpStatus.OK).body(misClientes);
         }catch (Exception exception){
             exception.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
 
     }
 
 
 }
-*/
