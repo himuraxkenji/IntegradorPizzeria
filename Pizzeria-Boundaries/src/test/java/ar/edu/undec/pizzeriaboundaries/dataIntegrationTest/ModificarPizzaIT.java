@@ -32,7 +32,7 @@ public class ModificarPizzaIT {
         boolean respuesta = modificarPizzaRepo.actualizar(pizza);
 
         assertTrue(respuesta);
-        
+
     }
 
 }
