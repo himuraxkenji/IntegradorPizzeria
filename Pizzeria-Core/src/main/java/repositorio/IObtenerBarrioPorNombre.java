@@ -2,8 +2,8 @@ package repositorio;
 
 import modelo.Barrio;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface IObtenerBarrioPorNombre {
-    Collection<Barrio> obtenerBarrioPorNombre(String nombre);
+    List<Barrio> obtenerBarrioPorNombre(String nombre);
 }

@@ -28,7 +28,7 @@ public class ModificarBarrioUnitTest {
 		 when(modificarBarrioRepo.findByNombre("Centro")).thenReturn(null);
 	     when(modificarBarrioRepo.actualizar(elBarrio)).thenReturn(true);
 	     ModificarBarrioUseCase modificarBarrioUseCase = new ModificarBarrioUseCase(modificarBarrioRepo);
-	     boolean resultadoActualizarBarrio = modificarBarrioUseCase.actualizarBarrio(elBarrio);
+	     boolean resultadoActualizarBarrio = modificarBarrioUseCase.modificarBarrio(elBarrio);
 	     Assertions.assertTrue(resultadoActualizarBarrio);
 	}
 }

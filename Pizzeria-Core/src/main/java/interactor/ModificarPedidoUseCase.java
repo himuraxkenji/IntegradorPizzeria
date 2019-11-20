@@ -3,6 +3,8 @@ package interactor;
 
 
 import excepciones.PedidoExisteException;
+import excepciones.PedidoIncompletoException;
+import excepciones.PizzaIncompletaException;
 import modelo.Pedido;
 import repositorio.IRepositorioModificarPedido;
 
@@ -16,7 +18,7 @@ public class ModificarPedidoUseCase {
     }
 
 
-	public Boolean actualizarPedido(Pedido PedidoDatosNuevos) throws PedidoExisteException {
+	public Boolean actualizarPedido(Pedido PedidoDatosNuevos) throws PedidoExisteException, PedidoIncompletoException, PizzaIncompletaException {
         Pedido PedidoAModificar  = modificarPedidoRepo.findByNroPedido(PedidoDatosNuevos.getNumeroPedido());
      
         if(PedidoAModificar == null )

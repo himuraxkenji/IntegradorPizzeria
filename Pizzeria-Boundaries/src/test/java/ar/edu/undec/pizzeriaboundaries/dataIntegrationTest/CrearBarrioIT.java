@@ -15,18 +15,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@SqlGroup({
+        @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:crearBarrioAntesUno.sql"),
+        @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:crearBarrioDespues.sql")
+})
 public class CrearBarrioIT {
 
     @Autowired
     CrearBarrioRepoImpl crearBarrioRepo;
 
     @Test
-    @SqlGroup({
-            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:crearBarrioAntesUno.sql"),
-            @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:crearBarrioDespues.sql")
-    })
     public void crearBarrio_BarrioNoExiste_BarrioGuardado() throws BarrioIncompletoException {
-        Barrio barrio = Barrio.factoryBarrio(1, "Castro y Bazan");
+        Barrio barrio = Barrio.factoryBarrio(null, "Castro y Bazan");
         boolean resultado = crearBarrioRepo.guardar(barrio);
         Assert.assertTrue(resultado);
     }

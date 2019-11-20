@@ -1,10 +1,11 @@
 package interactor;
 
 import excepciones.BarrioExisteException;
+import input.IModificarBarrioInput;
 import modelo.Barrio;
 import repositorio.IRepositorioModificarBarrio;
 
-public class ModificarBarrioUseCase {
+public class ModificarBarrioUseCase implements IModificarBarrioInput {
 	  private IRepositorioModificarBarrio modificarBarrioRepo;
 
 	   
@@ -14,7 +15,7 @@ public class ModificarBarrioUseCase {
 	    }
 
 
-		public Boolean actualizarBarrio(Barrio BarrioDatosNuevos) throws BarrioExisteException {
+		public boolean modificarBarrio(Barrio BarrioDatosNuevos) throws BarrioExisteException {
 	        Barrio BarrioAModificar  = modificarBarrioRepo.findByNombre(BarrioDatosNuevos.getNombre());
 	     
 	        if(BarrioAModificar == null )

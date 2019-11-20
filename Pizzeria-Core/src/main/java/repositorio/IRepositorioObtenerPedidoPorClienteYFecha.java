@@ -1,11 +1,13 @@
 package repositorio;
 
+import excepciones.PedidoIncompletoException;
+import excepciones.PizzaIncompletaException;
 import modelo.Cliente;
 import modelo.Pedido;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public interface IRepositorioObtenerPedidoPorClienteYFecha {
-    public ArrayList<Pedido> obtenerPedidoPorClienteYFecha(Cliente cliente, LocalDate fecha);
+    public List<Pedido> obtenerPedidoPorClienteYFecha(Cliente cliente, LocalDateTime fecha) throws PedidoIncompletoException, PizzaIncompletaException;
 }

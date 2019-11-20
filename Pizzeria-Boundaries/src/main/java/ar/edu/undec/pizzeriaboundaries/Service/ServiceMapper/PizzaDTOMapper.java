@@ -23,4 +23,11 @@ public class PizzaDTOMapper {
     }
 
 
+    public PizzaDTO mapeoCoreDTO(Pizza pizza) {
+
+        PizzaDTO pizzaDTO = new PizzaDTO(pizza.getIdPizza(), pizza.getNombre(), pizza.getPrecio(),pizza.getTiempoPreparacion());
+
+        return pizzaDTO;
+    }
+
 }
