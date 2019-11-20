@@ -29,7 +29,7 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest
 public class ObtenerPedidoPorClienteYFechaIT {
     @Autowired
-    ObtenerPedidoPorClienteYFechaRepoImpl repositorio;
+    private ObtenerPedidoPorClienteYFechaRepoImpl repositorio;
     @Test
     @SqlGroup({
             @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:obtenerPedidoPorClienteYFechaAntes.sql")
