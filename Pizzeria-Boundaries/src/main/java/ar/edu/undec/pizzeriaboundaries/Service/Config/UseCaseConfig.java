@@ -31,6 +31,9 @@ public class UseCaseConfig {
     @Autowired
     private IRepositorioModificarBarrio iRepositorioModificarBarrio;
 
+    @Autowired
+    private IRepositorioObtenerPizzaPorNombre iRepositorioObtenerPizzaPorNombre;
+
     @Bean
     public ModificarClienteUseCase modificarClienteUseCase(){ return new ModificarClienteUseCase(iRepositorioModificarCliente); }
 
@@ -56,6 +59,11 @@ public class UseCaseConfig {
     @Bean
     public ModificarBarrioUseCase modificarBarrioUseCase(){
         return new ModificarBarrioUseCase(iRepositorioModificarBarrio);
+    }
+
+    @Bean
+    public ObtenerPizzaPorNombreUseCase obtenerPizzaPorNombreUseCase(){
+        return new ObtenerPizzaPorNombreUseCase(iRepositorioObtenerPizzaPorNombre);
     }
 
 }
