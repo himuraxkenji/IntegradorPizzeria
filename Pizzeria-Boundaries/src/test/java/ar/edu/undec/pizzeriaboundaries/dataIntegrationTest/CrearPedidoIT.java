@@ -46,7 +46,9 @@ public class CrearPedidoIT {
     }
 
     @SqlGroup({
-            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:crearPedidoAntes.sql")
+            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:crearPedidoAntes.sql"),
+            @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:crearPedidoDespues.sql")
+
     })
 
     @Test

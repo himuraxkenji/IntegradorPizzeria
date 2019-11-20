@@ -2,7 +2,7 @@ package ar.edu.undec.pizzeriaboundaries.Service.Controller;
 
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.BarrioDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ServiceMapper.BarrioDTOMapper;
-import interactor.IObtenerBarrioPorNombreInput;
+import input.IObtenerBarrioPorNombreInput;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

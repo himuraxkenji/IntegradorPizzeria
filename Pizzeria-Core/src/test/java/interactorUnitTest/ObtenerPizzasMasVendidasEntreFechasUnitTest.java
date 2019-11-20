@@ -123,25 +123,27 @@ public class ObtenerPizzasMasVendidasEntreFechasUnitTest {
         losPedidosCargados.add(pedido5);
         losPedidosCargados.add(pedido6);
 
-        LocalDate fechaInicio = LocalDate.of(2019,11,8);
-        LocalDate fechaFin = LocalDate.of(2019, 11, 10);
+        LocalDateTime fechaInicio = LocalDateTime.of(2019,11,9,20,15);
 
-        Map<Pizza, Integer> pizzasMasVendidas= new LinkedHashMap<>();
+        LocalDateTime fechaFin = LocalDateTime.of(2019, 11, 10, 21, 14);
 
-        pizzasMasVendidas.put(pizza1, 7);
-        pizzasMasVendidas.put(pizza2, 7);
-        pizzasMasVendidas.put(pizza3, 5);
-        pizzasMasVendidas.put(pizza4, 4);
+       ArrayList<String> lasPizzasMasVendidas = new ArrayList<>();
+
+       lasPizzasMasVendidas.add("Napolitana 7");
+       lasPizzasMasVendidas.add("Comun 7");
+       lasPizzasMasVendidas.add("Especial 5");
+       lasPizzasMasVendidas.add("DobleMuzza 4");
+       lasPizzasMasVendidas.add("Palmitos 3");
 
 
 
 
         when(obtenerPedidosGateWay.obtenerPedidos()).thenReturn(losPedidosCargados);
-        when(obtenerPizzasMasVendidasEntreFechasGateWay.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin)).thenReturn((LinkedHashMap<Pizza, Integer>) pizzasMasVendidas);
+        when(obtenerPizzasMasVendidasEntreFechasGateWay.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin)).thenReturn(lasPizzasMasVendidas);
         ObtenerPizzasMasVendidasEntreFechasUseCase obtenerPizzasMasVendidasEntreFechas = new ObtenerPizzasMasVendidasEntreFechasUseCase(obtenerPizzasMasVendidasEntreFechasGateWay, obtenerPedidosGateWay);
         Assertions.assertEquals(6, obtenerPedidosGateWay.obtenerPedidos().size());
-        Assertions.assertEquals( 7, obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(pizza1));
-        Assertions.assertEquals( 7, obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(pizza2));
+        Assertions.assertEquals( "Napolitana 7", obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(0));
+        Assertions.assertEquals( "Comun 7", obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(1));
 
 
 

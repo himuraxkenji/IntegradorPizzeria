@@ -3,10 +3,11 @@ package interactor;
 import excepciones.PedidoExisteException;
 import excepciones.PedidoIncompletoException;
 import excepciones.PizzaIncompletaException;
+import input.ICrearPedidoInput;
 import modelo.Pedido;
 import repositorio.IRepositorioCrearPedido;
 
-public class CrearPedidoUseCase {
+public class CrearPedidoUseCase implements ICrearPedidoInput {
 
     private IRepositorioCrearPedido CrearPedidoGateWay;
 

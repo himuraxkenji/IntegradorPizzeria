@@ -28,6 +28,12 @@ public class UseCaseConfig {
     @Autowired
     private IRepositorioModificarPizza iRepositorioModificarPizza;
 
+    @Autowired
+    private IRepositorioCrearPedido iRepositorioCrearPedido;
+
+    @Bean
+    public CrearPedidoUseCase crearPedidoUseCase(){ return new CrearPedidoUseCase(iRepositorioCrearPedido);}
+
     @Bean
     public ModificarClienteUseCase modificarClienteUseCase(){ return new ModificarClienteUseCase(iRepositorioModificarCliente); }
 

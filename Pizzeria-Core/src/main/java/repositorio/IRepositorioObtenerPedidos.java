@@ -1,10 +1,13 @@
 package repositorio;
 
+import excepciones.PedidoIncompletoException;
+import excepciones.PizzaIncompletaException;
 import modelo.Pedido;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 public interface IRepositorioObtenerPedidos {
 
-    public ArrayList<Pedido> obtenerPedidos();
+    public List<Pedido> obtenerPedidos() throws PedidoIncompletoException, PizzaIncompletaException;
 }

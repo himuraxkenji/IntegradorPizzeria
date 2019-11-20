@@ -1,17 +1,15 @@
 package repositorio;
 
 
+import java.time.LocalDateTime;
 
-import modelo.Pizza;
+import java.util.ArrayList;
 
-import java.time.LocalDate;
-
-import java.util.LinkedHashMap;
 
 
 public interface IRepositorioObtenerPizzasMasVendidasEntreFechas {
 
-    public LinkedHashMap<Pizza, Integer> obtenerPizzasMasVendidasEntreFechas(LocalDate fechaInicio, LocalDate fechaFin);
+    ArrayList<String> obtenerPizzasMasVendidasEntreFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin);
 
 
 }

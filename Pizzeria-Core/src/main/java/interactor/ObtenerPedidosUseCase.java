@@ -1,5 +1,7 @@
 package interactor;
 
+import excepciones.PedidoIncompletoException;
+import excepciones.PizzaIncompletaException;
 import modelo.Pedido;
 import repositorio.IRepositorioObtenerPedidos;
 
@@ -13,7 +15,7 @@ public class ObtenerPedidosUseCase {
         this.obtenerPedidosGateWay = obtenerPedidosGateWay;
     }
 
-    public Collection<Pedido> obtenerPedidos(){
+    public Collection<Pedido> obtenerPedidos() throws PedidoIncompletoException, PizzaIncompletaException {
         return obtenerPedidosGateWay.obtenerPedidos();
     }
 }

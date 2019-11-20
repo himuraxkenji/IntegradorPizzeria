@@ -1,5 +1,6 @@
 package interactor;
 
+import input.IObtenerBarrioPorNombreInput;
 import modelo.Barrio;
 import repositorio.IObtenerBarrioPorNombre;
 

@@ -1,4 +1,4 @@
-package interactor;
+package input;
 
 import modelo.Barrio;
 
