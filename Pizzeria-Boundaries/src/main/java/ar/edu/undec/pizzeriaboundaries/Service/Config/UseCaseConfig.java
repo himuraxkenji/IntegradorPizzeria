@@ -29,17 +29,17 @@ public class UseCaseConfig {
     private IRepositorioModificarPizza iRepositorioModificarPizza;
 
     @Autowired
-<<<<<<< HEAD
+
     private IRepositorioCrearPedido iRepositorioCrearPedido;
 
     @Bean
     public CrearPedidoUseCase crearPedidoUseCase(){ return new CrearPedidoUseCase(iRepositorioCrearPedido);}
-=======
+
     private IRepositorioModificarBarrio iRepositorioModificarBarrio;
 
     @Autowired
     private IRepositorioObtenerPizzaPorNombre iRepositorioObtenerPizzaPorNombre;
->>>>>>> master
+
 
     @Bean
     public ModificarClienteUseCase modificarClienteUseCase(){ return new ModificarClienteUseCase(iRepositorioModificarCliente); }
