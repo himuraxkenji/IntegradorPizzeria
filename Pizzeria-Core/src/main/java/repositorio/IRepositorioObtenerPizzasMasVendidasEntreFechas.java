@@ -1,15 +1,18 @@
 package repositorio;
 
 
+import excepciones.FechaIncorrectaException;
+import excepciones.PedidoIncompletoException;
+import excepciones.PizzaIncompletaException;
+
 import java.time.LocalDateTime;
 
-import java.util.ArrayList;
-
+import java.util.List;
 
 
 public interface IRepositorioObtenerPizzasMasVendidasEntreFechas {
 
-    ArrayList<String> obtenerPizzasMasVendidasEntreFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin);
+    List<String> obtenerPizzasMasVendidasEntreFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin) throws FechaIncorrectaException, PedidoIncompletoException, PizzaIncompletaException;
 
 
 }

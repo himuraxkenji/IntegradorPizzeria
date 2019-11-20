@@ -5,8 +5,6 @@ import ar.edu.undec.pizzeriaboundaries.Data.RepositorioImplementacion.ObtenerPed
 import excepciones.PedidoIncompletoException;
 import excepciones.PizzaIncompletaException;
 import modelo.Pedido;
-import modelo.Pizza;
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Spy;

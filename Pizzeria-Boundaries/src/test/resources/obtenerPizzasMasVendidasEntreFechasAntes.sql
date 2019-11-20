@@ -24,9 +24,10 @@ insert into pizzas values(4, 'Especial', 270.0, 15);
 
 
 
-insert into pedidos values(1,'2019-11-17 20:10:25-07',1, 1 );
+insert into pedidos values(1,'2019-11-08 20:10:25-07',1, 1 );
 
-insert into pedidos values(2,'2019-11-18 21:15:25-07', 2, 2);
+insert into pedidos values(2,'2019-11-10 21:15:25-07', 2, 2);
+
 insert into pizzas_por_pedido values (1, 1);
 insert into pizzas_por_pedido values (1, 2);
 insert into pizzas_por_pedido values (1, 1);
@@ -35,4 +36,5 @@ insert into pizzas_por_pedido values (2, 1);
 insert into pizzas_por_pedido values (2, 4);
 insert into pizzas_por_pedido values (2, 2);
 insert into pizzas_por_pedido values (2, 1);
-
+insert into pizzas_por_pedido values (1, 2);
+insert into pizzas_por_pedido values (2, 2);
