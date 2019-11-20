@@ -10,6 +10,10 @@ import repositorio.*;
 public class UseCaseConfig {
 
 
+
+    @Autowired
+    private IRepositorioCrearPizza iRepositorioCrearPizza;
+
     @Autowired
     private IRepositorioModificarCliente iRepositorioModificarCliente;
 
@@ -29,17 +33,21 @@ public class UseCaseConfig {
     private IRepositorioModificarPizza iRepositorioModificarPizza;
 
     @Autowired
-
     private IRepositorioCrearPedido iRepositorioCrearPedido;
 
-    @Bean
-    public CrearPedidoUseCase crearPedidoUseCase(){ return new CrearPedidoUseCase(iRepositorioCrearPedido);}
-
+    @Autowired
     private IRepositorioModificarBarrio iRepositorioModificarBarrio;
+
 
     @Autowired
     private IRepositorioObtenerPizzaPorNombre iRepositorioObtenerPizzaPorNombre;
 
+    @Bean
+    public CrearPedidoUseCase crearPedidoUseCase(){ return new CrearPedidoUseCase(iRepositorioCrearPedido);}
+
+
+    @Bean
+    public CrearPizzaUseCase crearPizzaUseCase(){ return new CrearPizzaUseCase((iRepositorioCrearPizza));}
 
     @Bean
     public ModificarClienteUseCase modificarClienteUseCase(){ return new ModificarClienteUseCase(iRepositorioModificarCliente); }

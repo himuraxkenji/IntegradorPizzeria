@@ -16,6 +16,7 @@ import org.apache.http.HttpStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -35,9 +36,12 @@ public class CrearPedidoServiceIT {
     @Mock
     ICrearPedidoInput iCrearPedidoInput;
 
+    @Spy
+    List<PizzaDTO> listaItems= new ArrayList<>();
+
     private PedidoDTO cargaPedido() {
         BarrioDTO elBarrio= new BarrioDTO(1,"Centro");
-        List<PizzaDTO> items = new ArrayList<>();
+        List<PizzaDTO> items = listaItems;
         PizzaDTO laPizza= new PizzaDTO(1,"Napolitana",250.00f,15);
         PizzaDTO laSegundaPizza= new PizzaDTO(2,"Comun",200.00f,10);
         items.add(laPizza);

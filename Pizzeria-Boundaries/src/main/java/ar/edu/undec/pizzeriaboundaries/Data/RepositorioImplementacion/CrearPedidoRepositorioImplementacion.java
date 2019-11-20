@@ -14,7 +14,7 @@ import repositorio.IRepositorioCrearPedido;
 public class CrearPedidoRepositorioImplementacion implements IRepositorioCrearPedido {
 
     @Autowired
-    ICrearPedidoCRUD crearPedidoCRUD;
+    private ICrearPedidoCRUD crearPedidoCRUD;
 
     @Override
     public boolean guardar(Pedido elPedido) {

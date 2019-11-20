@@ -2,10 +2,11 @@ package interactor;
 
 import excepciones.PizzaExisteException;
 import excepciones.PizzaIncompletaException;
+import input.ICrearPizzaInput;
 import modelo.Pizza;
 import repositorio.IRepositorioCrearPizza;
 
-public class CrearPizzaUseCase {
+public class CrearPizzaUseCase implements ICrearPizzaInput {
 
     private IRepositorioCrearPizza crearPizzaGateWay;
 

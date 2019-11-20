@@ -1,7 +1,7 @@
 package ar.edu.undec.pizzeriaboundaries.Service.ModeloService;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import modelo.Cliente;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
