@@ -23,7 +23,7 @@ public class PedidoEntity {
     private LocalDateTime fecha;
     private Integer numeroPedido;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     @JoinTable(name = "pizzasPorPedido", joinColumns = {@JoinColumn(name="idPedido")}, inverseJoinColumns = { @JoinColumn(name="idPizza")})
     private Collection<PizzaEntity> items;
 

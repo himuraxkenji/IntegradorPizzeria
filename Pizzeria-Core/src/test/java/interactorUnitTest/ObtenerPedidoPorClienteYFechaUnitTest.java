@@ -47,9 +47,9 @@ public class ObtenerPedidoPorClienteYFechaUnitTest {
         ArrayList<Pedido> resultado = new ArrayList<>();
         resultado.add(primerPedido);
         resultado.add(segundoPedido);
-        when(repositorio.obtenerPedidoPorClienteYFecha(cliente, LocalDate.of(2019, 11, 8))).thenReturn(resultado);
+        when(repositorio.obtenerPedidoPorClienteYFecha(cliente, LocalDateTime.of(2019, 11, 8,0,0))).thenReturn(resultado);
         ObtenerPedidoPorClienteYFecha caso = new ObtenerPedidoPorClienteYFecha(repositorio);
-        assertEquals(resultado, caso.obtenerPedidoPorClienteYFecha(cliente, LocalDate.of(2019, 11, 8)));
+        assertEquals(resultado, caso.obtenerPedidoPorClienteYFecha(cliente, LocalDateTime.of(2019, 11, 8,0,0)));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class ObtenerPedidoPorClienteYFechaUnitTest {
                 "37492933");
         ObtenerPedidoPorClienteYFecha caso = new ObtenerPedidoPorClienteYFecha(repositorio);
         Assertions.assertThrows(FechaIncorrectaException.class, ()-> caso.obtenerPedidoPorClienteYFecha(cliente,
-                LocalDate.of(2020, 01,01)));
+                LocalDateTime.of(2020, 01,01,0,0)));
     }
 
 }
