@@ -5,6 +5,8 @@ import excepciones.FechaIncorrectaException;
 import excepciones.PedidoIncompletoException;
 import excepciones.PedidosNoEncontradosException;
 import excepciones.PizzaIncompletaException;
+import input.IObtenerPedidosInput;
+import input.IObtenerPizzasMasVendidasFechasInput;
 import modelo.Pedido;
 import modelo.Pizza;
 import repositorio.IRepositorioObtenerPedidos;
@@ -18,7 +20,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class ObtenerPizzasMasVendidasEntreFechasUseCase  {
+public class ObtenerPizzasMasVendidasEntreFechasUseCase implements IObtenerPizzasMasVendidasFechasInput {
 
 
    private IRepositorioObtenerPizzasMasVendidasEntreFechas obtenerPizzasMasVendidasEntreFechas;
@@ -30,6 +32,7 @@ public class ObtenerPizzasMasVendidasEntreFechasUseCase  {
         this.obtenerPedidosGateWay = obtenerPedidosGateWay;
     }
 
+    @Override
     public HashMap<Pizza, Integer> obtenerPizzasMasVendidasEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) throws FechaIncorrectaException, PedidoIncompletoException, PizzaIncompletaException, PedidosNoEncontradosException {
 
         if (fechaFin.isBefore(fechaInicio)) {
@@ -81,6 +84,8 @@ public class ObtenerPizzasMasVendidasEntreFechasUseCase  {
 
         }
     }
+
+
 
 
 }

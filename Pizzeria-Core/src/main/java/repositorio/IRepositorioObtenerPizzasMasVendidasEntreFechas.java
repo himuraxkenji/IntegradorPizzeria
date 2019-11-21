@@ -5,10 +5,11 @@ import excepciones.PedidoIncompletoException;
 import excepciones.PizzaIncompletaException;
 import modelo.Pizza;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 import java.util.HashMap;
 
 public interface IRepositorioObtenerPizzasMasVendidasEntreFechas {
 
-    HashMap<Pizza, Integer> obtenerPizzasMasVendidasEntreFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin) throws FechaIncorrectaException, PedidoIncompletoException, PizzaIncompletaException;
+    HashMap<Pizza, Integer> obtenerPizzasMasVendidasEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) throws FechaIncorrectaException, PedidoIncompletoException, PizzaIncompletaException;
 }
