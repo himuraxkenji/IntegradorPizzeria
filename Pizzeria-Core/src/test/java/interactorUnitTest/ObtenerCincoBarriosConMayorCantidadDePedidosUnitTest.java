@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-public class ObtenerCincoBarriosConMayorCantidadDePedidos {
+public class ObtenerCincoBarriosConMayorCantidadDePedidosUnitTest {
 
     @Mock
     IRepositorioObtenerCincoBarriosConMayorCantidadDePedidos iRepositorioObtenerCincoBarriosConMayorCantidadDePedidos;
@@ -36,7 +36,7 @@ public class ObtenerCincoBarriosConMayorCantidadDePedidos {
     @Test
     public void obtenerCincoBarriosConMayorCantidadPedidos_ExistenPedidos_RetornaTrue(){
 
-        Mockito.when(iRepositorioObtenerCincoBarriosConMayorCantidadDePedidos.obtenerCincoBarriorConMayorCantidadDePedidos()).thenReturn(this.barrios);
+        Mockito.when(iRepositorioObtenerCincoBarriosConMayorCantidadDePedidos.obtenerCincoBarriosConMayorCantidadDePedidos()).thenReturn(this.barrios);
         ObtenerCincoBarriosConMayorCantidadDePedidosUseCase obtenerBarriosUseCase = new ObtenerCincoBarriosConMayorCantidadDePedidosUseCase(iRepositorioObtenerCincoBarriosConMayorCantidadDePedidos);
         List<Barrio> barriosMayorPedidos = obtenerBarriosUseCase.obtenerCincoBarriosConMayorCantidadDePedidos();
         Assertions.assertEquals(5,barriosMayorPedidos.size());

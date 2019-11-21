@@ -16,6 +16,6 @@ public class ObtenerCincoBarriosConMayorCantidadDePedidosUseCase implements Obte
 
     @Override
     public List<Barrio> obtenerCincoBarriosConMayorCantidadDePedidos() {
-        return this.iRepositorioObtenerCincoBarriosConMayorCantidadDePedidos.obtenerCincoBarriorConMayorCantidadDePedidos();
+        return this.iRepositorioObtenerCincoBarriosConMayorCantidadDePedidos.obtenerCincoBarriosConMayorCantidadDePedidos();
     }
 }
