@@ -95,6 +95,24 @@ public class ObtenerPizzasMasVendidasEntreFechasUnitTest {
         items6.add(pizza10);
         items6.add(pizza3);
 
+        Collection<Pizza> items7 = new ArrayList<>();
+        items7.add(pizza1);
+        items7.add(pizza3);
+        items7.add(pizza4);
+        items7.add(pizza7);
+        items7.add(pizza2);
+        items7.add(pizza10);
+        items7.add(pizza3);
+
+        Collection<Pizza> items8 = new ArrayList<>();
+        items8.add(pizza1);
+        items8.add(pizza3);
+        items8.add(pizza4);
+        items8.add(pizza7);
+        items8.add(pizza2);
+        items8.add(pizza10);
+        items8.add(pizza3);
+
 
 
         Pedido pedido1 = Pedido.factoryPedido(1, rodrigo, LocalDateTime.of(2019, 11,8,19,30),
@@ -115,6 +133,13 @@ public class ObtenerPizzasMasVendidasEntreFechasUnitTest {
         Pedido pedido6 = Pedido.factoryPedido(6, juan, LocalDateTime.of(2019, 11,10,20,45),
                 items6 ,6);
 
+        Pedido pedidoFueraDeFecha1 = Pedido.factoryPedido(7, rodrigo, LocalDateTime.of(2019, 11,7,20,45),
+                items7 ,7);
+
+        Pedido pedidoFueraDeFecha2 = Pedido.factoryPedido(8, juan, LocalDateTime.of(2019, 11,11,21,45),
+                items8 ,8);
+
+
         ArrayList<Pedido> losPedidosCargados = new ArrayList<>();
         losPedidosCargados.add(pedido1);
         losPedidosCargados.add(pedido2);
@@ -122,29 +147,21 @@ public class ObtenerPizzasMasVendidasEntreFechasUnitTest {
         losPedidosCargados.add(pedido4);
         losPedidosCargados.add(pedido5);
         losPedidosCargados.add(pedido6);
+        losPedidosCargados.add(pedidoFueraDeFecha1);
+        losPedidosCargados.add(pedidoFueraDeFecha2);
 
-        LocalDateTime fechaInicio = LocalDateTime.of(2019,11,9,20,15);
+        LocalDate fechaInicio = LocalDate.of(2019,11,8);
 
-        LocalDateTime fechaFin = LocalDateTime.of(2019, 11, 10, 21, 14);
-
-       ArrayList<String> lasPizzasMasVendidas = new ArrayList<>();
-
-       lasPizzasMasVendidas.add("Napolitana 7");
-       lasPizzasMasVendidas.add("Comun 7");
-       lasPizzasMasVendidas.add("Especial 5");
-       lasPizzasMasVendidas.add("DobleMuzza 4");
-       lasPizzasMasVendidas.add("Palmitos 3");
-
-
+        LocalDate fechaFin = LocalDate.of(2019, 11, 10);
 
 
         when(obtenerPedidosGateWay.obtenerPedidos()).thenReturn(losPedidosCargados);
-        when(obtenerPizzasMasVendidasEntreFechasGateWay.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin)).thenReturn(lasPizzasMasVendidas);
         ObtenerPizzasMasVendidasEntreFechasUseCase obtenerPizzasMasVendidasEntreFechas = new ObtenerPizzasMasVendidasEntreFechasUseCase(obtenerPizzasMasVendidasEntreFechasGateWay, obtenerPedidosGateWay);
-        Assertions.assertEquals(6, obtenerPedidosGateWay.obtenerPedidos().size());
-        Assertions.assertEquals( "Napolitana 7", obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(0));
-        Assertions.assertEquals( "Comun 7", obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(1));
+        Assertions.assertEquals( 10, obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(pizza1));
+        Assertions.assertEquals( 6, obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(pizza2));
+        HashMap<Pizza, Integer> laLista = obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin);
 
+        laLista.entrySet().forEach(pizzaIntegerEntry -> {System.out.println(pizzaIntegerEntry.getKey().getNombre() + " " + pizzaIntegerEntry.getValue());});
 
 
     }
