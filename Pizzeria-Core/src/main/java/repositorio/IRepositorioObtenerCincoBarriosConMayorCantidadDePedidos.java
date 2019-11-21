@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IRepositorioObtenerCincoBarriosConMayorCantidadDePedidos {
 
-    List<Barrio> obtenerCincoBarriorConMayorCantidadDePedidos();
+    List<Barrio> obtenerCincoBarriosConMayorCantidadDePedidos();
 
 }

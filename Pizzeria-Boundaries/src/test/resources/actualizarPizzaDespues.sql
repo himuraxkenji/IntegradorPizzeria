@@ -1,1 +1,1 @@
-DELETE FROM pizzas;
+select * FROM pizzas;

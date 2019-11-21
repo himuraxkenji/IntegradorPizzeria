@@ -29,31 +29,25 @@ import static org.junit.Assert.assertTrue;
 public class ModificarPedidoIT {
 
     @Autowired
-    ActualizarPedidoRepoImpl actualizarPedidoRepo;
-    @Spy
-    Collection<Pizza> listaPizzas= factoryItemsPizza();
+    private ActualizarPedidoRepoImpl actualizarPedidoRepo;
 
-     public ModificarPedidoIT() throws PizzaIncompletaException {
-    }
 
-    private Collection<Pizza> factoryItemsPizza() throws PizzaIncompletaException {
-        Collection<Pizza> items = new ArrayList<>();
-        Pizza laPizza=Pizza.factoryPizza(1,"Napolitana",250.00f,15);
-        Pizza laSegundaPizza=Pizza.factoryPizza(2,"Comun",200.00f,10);
-        items.add(laPizza);
-        items.add(laSegundaPizza);
-        return items;
-    }
+
     @SqlGroup({
             @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:actualizarPedidoAntes.sql"),
             @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:actualizarPedidoDespues.sql")
     })
     @Test
-    public void actualizarPedido_PedidoGuardado_devuelveTrue() throws PedidoIncompletoException, BarrioIncompletoException, ClienteIncompletoException {
+    public void actualizarPedido_PedidoGuardado_devuelveTrue() throws PedidoIncompletoException, BarrioIncompletoException, ClienteIncompletoException, PizzaIncompletaException {
+        Collection<Pizza> items = new ArrayList<>();
+        Pizza laPizza=Pizza.factoryPizza(1,"Napolitana",250.00f,15);
+        Pizza laSegundaPizza=Pizza.factoryPizza(2,"Comun",200.00f,10);
+        items.add(laPizza);
+        items.add(laSegundaPizza);
         Barrio elBarrio=Barrio.factoryBarrio(1,"San Francisco");
         Cliente elCliente=Cliente.factoryCliente(1,"Rodrigo Alarcon","San Francisco",elBarrio,"28131367");
         LocalDateTime fecha = LocalDateTime.now();
-        Pedido elPedido=Pedido.factoryPedido(null,elCliente, fecha, listaPizzas,  1 );
+        Pedido elPedido=Pedido.factoryPedido(null,elCliente, fecha, items,  1 );
 
 
         boolean resultado= actualizarPedidoRepo.actualizar(elPedido);
