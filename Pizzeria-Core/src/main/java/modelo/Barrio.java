@@ -14,7 +14,7 @@ public class Barrio {
     }
 
     public static Barrio factoryBarrio(Integer idBarrio, String nombre) throws BarrioIncompletoException {
-        if( nombre == null) throw new BarrioIncompletoException();
+        if( nombre == null || nombre == "") throw new BarrioIncompletoException();
         return new Barrio(idBarrio, nombre);
 
     }
