@@ -42,6 +42,10 @@ public class UseCaseConfig {
     @Autowired
     private IRepositorioObtenerPizzaPorNombre iRepositorioObtenerPizzaPorNombre;
 
+
+    @Autowired
+    private IRepositorioModificarPedido modificarPedidoRepo;
+
     @Bean
     public CrearPedidoUseCase crearPedidoUseCase(){ return new CrearPedidoUseCase(iRepositorioCrearPedido);}
 
@@ -81,4 +85,8 @@ public class UseCaseConfig {
         return new ObtenerPizzaPorNombreUseCase(iRepositorioObtenerPizzaPorNombre);
     }
 
+    @Bean
+    public ModificarPedidoUseCase modificarPedidoUseCase(){
+        return new ModificarPedidoUseCase(modificarPedidoRepo);
+    }
 }
