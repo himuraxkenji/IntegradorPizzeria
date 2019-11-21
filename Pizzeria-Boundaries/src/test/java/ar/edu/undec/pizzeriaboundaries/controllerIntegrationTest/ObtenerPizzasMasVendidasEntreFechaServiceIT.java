@@ -1,25 +1,33 @@
-/*package ar.edu.undec.pizzeriaboundaries.controllerIntegrationTest;
+package ar.edu.undec.pizzeriaboundaries.controllerIntegrationTest;
 
-import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.BarrioDTO;
-import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.ClienteDTO;
-import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PedidoDTO;
+import ar.edu.undec.pizzeriaboundaries.Service.Controller.ObtenerPizzasMasVendidasEntreFechaController;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PizzaDTO;
-import ar.edu.undec.pizzeriaboundaries.Service.ServiceMapper.PedidoDTOMapper;
+
+import excepciones.FechaIncorrectaException;
 import excepciones.PedidoIncompletoException;
+import excepciones.PedidosNoEncontradosException;
 import excepciones.PizzaIncompletaException;
-import input.IObtenerPedidosInput;
+
 import input.IObtenerPizzasMasVendidasFechasInput;
-import modelo.Pedido;
+
+import modelo.Pizza;
+import org.apache.http.HttpStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -29,42 +37,51 @@ public class ObtenerPizzasMasVendidasEntreFechaServiceIT {
     @Mock
     IObtenerPizzasMasVendidasFechasInput obtenerPizzasMasVendidasFechasInput;
 
-    @Mock
-    IObtenerPedidosInput obtenerPedidosInput;
 
-    private List<PedidoDTO> losPedidos = new ArrayList<>();
 
-    private List<Pedido> factoryListaPedido(List<PedidoDTO> pedidos) throws PedidoIncompletoException {
-        List<Pedido> devuelve = new ArrayList<>();
-        for (PedidoDTO pedido : pedidos) {
-            devuelve.add(new PedidoDTOMapper().mapeoDTOCore(pedido));
+
+    private HashMap<PizzaDTO, Integer> lasPizzasDTO = new HashMap<>();
+
+
+    private HashMap<Pizza, Integer> factoryMap(HashMap<PizzaDTO, Integer> mapaPizzaDTO)  {
+        HashMap<Pizza, Integer> pizzaCoreMap = new HashMap<>();
+        ArrayList<Pizza> laPizzaArrayCore = new ArrayList(mapaPizzaDTO.keySet());
+        ArrayList<Integer> laCantidadCore = new ArrayList(mapaPizzaDTO.values());
+        for(int i=0; i<laPizzaArrayCore.size();++i){
+            pizzaCoreMap.put(laPizzaArrayCore.get(i), laCantidadCore.get(i));
         }
-        return devuelve;
-    }
-
-    public List<Pedido> factoryPedido() throws PedidoIncompletoException, PizzaIncompletaException {
-        List<Pedido> pedidos = obtenerPedidosInput.obtenerPedidos();
+        return pizzaCoreMap;
     }
 
 
     @Test
-    public void ObtenerPizzasMasVendidasEntreFecha_DevuelveCorrecto() throws PedidoIncompletoException, PizzaIncompletaException {
-        BarrioDTO elBarrio = new BarrioDTO(1,"San Francisco");
-        ClienteDTO cliente = new ClienteDTO(1,"Rodrigo Alarcon","San Francisco 285","28131367",elBarrio);
-        ClienteDTO cliente2 = new ClienteDTO(2,"Juan Perez","San Martin 212","28124112",elBarrio);
-        PizzaDTO Espcial = new PizzaDTO(1,"Especial",250.0f,15);
+    public void ObtenerPizzasMasVendidasEntreFecha_DevuelveCorrecto() throws PedidoIncompletoException, PizzaIncompletaException, FechaIncorrectaException, PedidosNoEncontradosException {
+
+        PizzaDTO Especial = new PizzaDTO(1,"Especial",250.0f,15);
         PizzaDTO Comun = new PizzaDTO(2,"Comun",200.0f,10);
-        List<PizzaDTO> losItems = new ArrayList<>();
-        losItems.add(Espcial);
-        losItems.add(Comun);
-        PedidoDTO pedido1 = new PedidoDTO(1,cliente, LocalDateTime.of(2019,11,11,21,15),losItems,1);
-        PedidoDTO pedido2 = new PedidoDTO(2,cliente2, LocalDateTime.of(2019,11,12,22,15),losItems,2);
-        losPedidos.add(pedido1);
-        losPedidos.add(pedido2);
-        when( obtenerPedidosInput.obtenerPedidos()).thenReturn(this.factoryListaPedido(losPedidos));
-        when(obtenerPizzasMasVendidasFechasInput.obtenerPizzasMasVendidasEntreFechas()).thenReturn();
+        PizzaDTO Napo = new PizzaDTO(3, "Napolitana", 270.0f, 15);
+        PizzaDTO Palmitos = new PizzaDTO(4, "Palmitos", 260.0f, 20);
+        PizzaDTO Argentina = new PizzaDTO(5, "Argentina", 300.0f, 20);
+        PizzaDTO DobleMuzza = new PizzaDTO(6, "DobleMuzza", 270.0f, 15);
+
+
+        lasPizzasDTO.put(Especial, 10);
+        lasPizzasDTO.put(Comun, 9);
+        lasPizzasDTO.put(Napo, 9);
+        lasPizzasDTO.put(Palmitos, 7);
+        lasPizzasDTO.put(DobleMuzza,6);
+        lasPizzasDTO.put(Argentina, 6);
+
+        LocalDate fechaInicio = LocalDate.of(2019, 11, 8);
+        LocalDate fechaFin = LocalDate.of(2019, 11, 10);
+
+
+        when(obtenerPizzasMasVendidasFechasInput.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin)).thenReturn(this.factoryMap(lasPizzasDTO));
+        ObtenerPizzasMasVendidasEntreFechaController obtenerPizzasMasVendidasEntreFechaController = new ObtenerPizzasMasVendidasEntreFechaController(obtenerPizzasMasVendidasFechasInput);
+        assertEquals(HttpStatus.SC_OK, obtenerPizzasMasVendidasEntreFechaController.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).getStatusCodeValue());
+
     }
 
 
 }
-*/
+

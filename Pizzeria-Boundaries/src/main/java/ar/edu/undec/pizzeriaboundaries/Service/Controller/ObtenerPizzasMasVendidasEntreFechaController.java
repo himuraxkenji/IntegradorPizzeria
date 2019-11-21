@@ -1,55 +1,52 @@
 package ar.edu.undec.pizzeriaboundaries.Service.Controller;
 
-import excepciones.FechaIncorrectaException;
+
 import excepciones.PedidoIncompletoException;
-import excepciones.PizzaIncompletaException;
+import excepciones.PedidosNoEncontradosException;
+
+import input.IObtenerPizzasMasVendidasFechasInput;
 
 import modelo.Pizza;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import repositorio.IRepositorioObtenerPizzasMasVendidasEntreFechas;
 
 import java.time.LocalDate;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-
+@RequestMapping("/")
+@RestController
 public class ObtenerPizzasMasVendidasEntreFechaController {
 
-    private IRepositorioObtenerPizzasMasVendidasEntreFechas obtenerPizzasMasVendidasEntreFechas;
+    private IObtenerPizzasMasVendidasFechasInput obtenerPizzasMasVendidasEntreFechasInput;
 
 
-    public ObtenerPizzasMasVendidasEntreFechaController(IRepositorioObtenerPizzasMasVendidasEntreFechas obtenerPizzasMasVendidasEntreFechas) {
-        this.obtenerPizzasMasVendidasEntreFechas = obtenerPizzasMasVendidasEntreFechas;
-
+    public ObtenerPizzasMasVendidasEntreFechaController(IObtenerPizzasMasVendidasFechasInput obtenerPizzasMasVendidasEntreFechasInput) {
+        this.obtenerPizzasMasVendidasEntreFechasInput = obtenerPizzasMasVendidasEntreFechasInput;
     }
 
-    @RequestMapping(value = "pizza/Integer", method = RequestMethod.GET)
+    @RequestMapping(value = "pizza_Integer", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<?> obtenerPizzasMasVendidasEntreFechas(@RequestBody LocalDate fechaInicio, @RequestBody LocalDate fechaFin) {
         try {
-            HashMap<Pizza, Integer> lasPizzasMap = this.obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin);
-            ArrayList<Pizza> laPizzaArray = new ArrayList(lasPizzasMap.keySet());
-            ArrayList<Integer> laPizzaCantidad = new ArrayList(lasPizzasMap.values());
-            ArrayList<String> lasListadePizzasMasVendidasEntreFechas = new ArrayList<>();
+            HashMap<Pizza, Integer> lasPizzasMap = this.obtenerPizzasMasVendidasEntreFechasInput.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin);
 
-            for (int i = 0; i < laPizzaArray.size(); ++i) {
-                lasListadePizzasMasVendidasEntreFechas.add(laPizzaArray.get(i).getNombre() + " " + laPizzaCantidad.get(i).toString());
-            }
+            if (!lasPizzasMap.isEmpty()) {
 
-            if (lasListadePizzasMasVendidasEntreFechas.size() > 0) {
-
-                return ResponseEntity.status(HttpStatus.OK).body(lasListadePizzasMasVendidasEntreFechas);
+                return ResponseEntity.status(HttpStatus.OK).body(lasPizzasMap);
             } else {
 
 
                  return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
-        } catch(Exception | PedidoIncompletoException ex){
+        } catch(Exception | PedidoIncompletoException | PedidosNoEncontradosException ex){
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(null);
         }
     }
 }
+
+
+

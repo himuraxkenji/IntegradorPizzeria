@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import repositorio.IRepositorioObtenerPedidos;
-import repositorio.IRepositorioObtenerPizzasMasVendidasEntreFechas;
+
 
 
 import java.time.LocalDate;
@@ -24,8 +24,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class ObtenerPizzasMasVendidasEntreFechasUnitTest {
 
-    @Mock
-    IRepositorioObtenerPizzasMasVendidasEntreFechas obtenerPizzasMasVendidasEntreFechasGateWay;
+
     @Mock
     IRepositorioObtenerPedidos obtenerPedidosGateWay;
 
@@ -156,7 +155,7 @@ public class ObtenerPizzasMasVendidasEntreFechasUnitTest {
 
 
         when(obtenerPedidosGateWay.obtenerPedidos()).thenReturn(losPedidosCargados);
-        ObtenerPizzasMasVendidasEntreFechasUseCase obtenerPizzasMasVendidasEntreFechas = new ObtenerPizzasMasVendidasEntreFechasUseCase(obtenerPizzasMasVendidasEntreFechasGateWay, obtenerPedidosGateWay);
+        ObtenerPizzasMasVendidasEntreFechasUseCase obtenerPizzasMasVendidasEntreFechas = new ObtenerPizzasMasVendidasEntreFechasUseCase(obtenerPedidosGateWay);
         Assertions.assertEquals( 10, obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(pizza1));
         Assertions.assertEquals( 6, obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin).get(pizza2));
         HashMap<Pizza, Integer> laLista = obtenerPizzasMasVendidasEntreFechas.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin);

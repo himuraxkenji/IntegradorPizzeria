@@ -1,5 +1,7 @@
 package ar.edu.undec.pizzeriaboundaries.Service.Config;
 
+import excepciones.PedidoIncompletoException;
+import excepciones.PizzaIncompletaException;
 import interactor.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -43,6 +45,9 @@ public class UseCaseConfig {
 
     @Autowired
     private IRepositorioObtenerPizzaPorNombre iRepositorioObtenerPizzaPorNombre;
+
+    @Bean
+    public ObtenerPizzasMasVendidasEntreFechasUseCase obtenerPizzasMasVendidasEntreFechasUseCase() { return new ObtenerPizzasMasVendidasEntreFechasUseCase(iRepositorioObtenerPedidos);}
 
     @Bean
     public ObtenerPedidosUseCase obtenerPedidosUseCase(){ return new ObtenerPedidosUseCase(iRepositorioObtenerPedidos);}
