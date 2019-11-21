@@ -22,12 +22,8 @@ public class ObtenerPizzaPorNombreRepoImpl implements IRepositorioObtenerPizzaPo
     public List<Pizza> obtenerPizzaPorNombre(String nombre) {
         List<Pizza> pizzas = new ArrayList<Pizza>();
         for (PizzaEntity pizza: iObtenerPizzaPorNombreCRUD.findByNombreContains(nombre)) {
-            try {
                 Pizza pizzaDos = new PizzaEntityMapper().mapeoDataCore(pizza);
                 pizzas.add(pizzaDos);
-            } catch (PizzaIncompletaException e) {
-                e.printStackTrace();
-            }
         }
         return pizzas;
     }

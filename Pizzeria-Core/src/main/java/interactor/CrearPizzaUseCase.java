@@ -14,14 +14,11 @@ public class CrearPizzaUseCase implements ICrearPizzaInput {
         this.crearPizzaGateWay = crearPizzaGateWay;
     }
 
-    public boolean existePizza(Pizza laPizza) throws PizzaIncompletaException {
-        return crearPizzaGateWay.buscarPizzaPorNombre(laPizza.getNombre()) != null;
-    }
-
-    public boolean crearPizza(Pizza laPizza) throws PizzaExisteException, PizzaIncompletaException {
-        if(!existePizza(laPizza)){
+    @Override
+    public boolean crearPizza(Pizza laPizza) throws PizzaExisteException {
+        if(crearPizzaGateWay.buscarPizzaPorNombre(laPizza.getNombre()) == null)
             return this.crearPizzaGateWay.guardar(laPizza);
-        }
+
         throw new PizzaExisteException();
     }
 }

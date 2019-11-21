@@ -16,17 +16,13 @@ public class Pizza {
         this.tiempoPreparacion = tiempoPreparacion;
     }
 
-    public static Pizza factoryPizza(Integer idPizza, String nombre, float precio, Integer tiempoPreapracion) throws PizzaIncompletaException {
-        if(idPizza == null || nombre == "" || nombre == null || precio == 0.0f || tiempoPreapracion== null){
+    public static Pizza factoryPizza(Integer idPizza, String nombre, float precio, Integer tiempoPreparacion) throws PizzaIncompletaException {
+        if(nombre.length() == 0 || nombre == null || precio == 0.0f || tiempoPreparacion == null || tiempoPreparacion == 0)
             throw new PizzaIncompletaException();
-        }else{
-            return new Pizza(idPizza, nombre, precio, tiempoPreapracion);
-        }
+        return new Pizza(idPizza, nombre, precio, tiempoPreparacion);
     }
 
-
-
-    public Integer getIdPizza() {
+    public Integer getIdPizza(){
         return idPizza;
     }
 

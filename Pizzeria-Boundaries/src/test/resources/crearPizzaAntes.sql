@@ -1,4 +1,3 @@
-
 delete from pizzas_por_pedido;
 delete from pedidos;
 delete from clientes;

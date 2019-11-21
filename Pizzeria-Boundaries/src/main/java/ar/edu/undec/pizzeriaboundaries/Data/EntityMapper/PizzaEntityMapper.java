@@ -15,7 +15,12 @@ public class PizzaEntityMapper {
         return pizzaentity;
     }
 
-    public Pizza mapeoDataCore(PizzaEntity pizzaEntity) throws PizzaIncompletaException {
-        return Pizza.factoryPizza(pizzaEntity.getIdPizza(), pizzaEntity.getNombre(), pizzaEntity.getPrecio(), pizzaEntity.getTiempoPreparacion());
+    public Pizza mapeoDataCore(PizzaEntity pizzaEntity){
+        try {
+            return Pizza.factoryPizza(pizzaEntity.getIdPizza(), pizzaEntity.getNombre(), pizzaEntity.getPrecio(), pizzaEntity.getTiempoPreparacion());
+        } catch (PizzaIncompletaException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

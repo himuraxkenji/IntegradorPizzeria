@@ -6,6 +6,6 @@ import modelo.Pizza;
 
 public interface ICrearPizzaInput {
 
-    boolean crearPizza(Pizza nuevaPizza) throws PizzaIncompletaException, PizzaExisteException;
+    boolean crearPizza(Pizza nuevaPizza) throws PizzaExisteException;
 
 }

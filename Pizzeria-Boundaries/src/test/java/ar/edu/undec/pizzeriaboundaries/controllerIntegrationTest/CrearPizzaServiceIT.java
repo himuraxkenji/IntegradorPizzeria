@@ -33,7 +33,7 @@ public class CrearPizzaServiceIT {
     @Test
     public void crearPizza_PizzaCreada_devuelveTrue() throws PizzaIncompletaException, PizzaExisteException {
 
-        PizzaDTO nuevaPizza = new PizzaDTO(1, "Napolitana", 250, 15);
+        PizzaDTO nuevaPizza = new PizzaDTO(null, "Napolitana", 250, 15);
 
         when(iCrearPizzaInput.crearPizza(any(Pizza.class))).thenReturn(true);
         CrearPizzaController crearPizzaController = new CrearPizzaController(iCrearPizzaInput);
