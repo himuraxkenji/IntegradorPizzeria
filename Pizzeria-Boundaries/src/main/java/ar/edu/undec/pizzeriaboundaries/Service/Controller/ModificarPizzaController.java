@@ -31,7 +31,7 @@ public class ModificarPizzaController {
             if(respuesta) return ResponseEntity.status(HttpStatus.OK).body(true);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
-        }catch (PizzaIncompletaException | PizzaExisteException ex){
+        }catch (PizzaExisteException  ex){
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(false);
 
         }

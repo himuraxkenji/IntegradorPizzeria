@@ -15,26 +15,18 @@ public class ModificarPizzaUseCase implements IModificarPizzaInput {
         this.iRepositorioModificarPizza = iRepositorioModificarPizza;
     }
 
-    public boolean modificarPizza(Pizza pizzaNueva) throws PizzaExisteException, PizzaIncompletaException {
+    public boolean modificarPizza(Pizza pizzaNueva) throws PizzaExisteException{
 
         Pizza pizzaAModificar = iRepositorioModificarPizza.findByNombrePizza(pizzaNueva.getNombre());
 
-        if(pizzaAModificar == null){
-
+        if(pizzaAModificar == null)
             return this.iRepositorioModificarPizza.actualizarPizza(pizzaNueva);
 
-        }else {
-            if(pizzaAModificar.getIdPizza() != pizzaNueva.getIdPizza()){
-                throw new PizzaExisteException();
-            }else{
-                if(pizzaAModificar.getNombre().equals(pizzaNueva.getNombre())){
-                    return this.iRepositorioModificarPizza.actualizarPizza(pizzaNueva);
-                }
-            }
+        else if(pizzaAModificar.getIdPizza() != pizzaNueva.getIdPizza())
+            throw new PizzaExisteException();
+        else
+            return this.iRepositorioModificarPizza.actualizarPizza(pizzaNueva);
 
-        }
-        return false;
     }
-
 
 }

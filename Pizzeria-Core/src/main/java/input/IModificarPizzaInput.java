@@ -6,6 +6,6 @@ import modelo.Pizza;
 
 public interface IModificarPizzaInput {
 
-    boolean modificarPizza(Pizza pizza) throws PizzaIncompletaException, PizzaExisteException;
+    boolean modificarPizza(Pizza pizza) throws PizzaExisteException;
 
 }
