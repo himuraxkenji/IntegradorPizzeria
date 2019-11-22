@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IRepositorioObtenerClientePorNombre {
 
-    Collection<Cliente> obtenerClientePorNombre(String nombreCliente);
+    List<Cliente> obtenerClientePorNombre(String nombreCliente);
 
 }

@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface IObtenerClientePorNombreCRUD extends CrudRepository<ClienteEntity, Integer> {
 
-    List<ClienteEntity> findByNombre(String nombre);
+    List<ClienteEntity> findByNombreContains(String nombre);
 
 }

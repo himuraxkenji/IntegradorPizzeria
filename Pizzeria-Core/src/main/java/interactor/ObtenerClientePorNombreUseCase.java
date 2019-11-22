@@ -18,7 +18,7 @@ public class ObtenerClientePorNombreUseCase implements IObtenerClientePorNombreI
 
     public List<Cliente> obtenerClientePorNombre(String nombreCliente) {
 
-        List<Cliente> nuevaLista = (List<Cliente>) obtenerClientePorNombreGateway.obtenerClientePorNombre(nombreCliente);
+        List<Cliente> nuevaLista = obtenerClientePorNombreGateway.obtenerClientePorNombre(nombreCliente);
 
         return nuevaLista;
     }

@@ -20,9 +20,9 @@ public class ObtenerClientePorNombreRepoImpl implements IRepositorioObtenerClien
     @Override
     public List<Cliente> obtenerClientePorNombre(String nombreCliente) {
 
-        List<Cliente> listaClientes = new ArrayList<>();
+        List<Cliente> listaClientes = new ArrayList<Cliente>();
 
-        for (ClienteEntity cliente : iObtenerClientePorNombreCRUD.findByNombre(nombreCliente)) {
+        for (ClienteEntity cliente : iObtenerClientePorNombreCRUD.findByNombreContains(nombreCliente)) {
 
             Cliente nuevoCliente = new ClienteEntityMapper().mapeoDataCore(cliente);
 
