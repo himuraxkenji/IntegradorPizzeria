@@ -16,7 +16,7 @@ public class CrearPizzaUseCase implements ICrearPizzaInput {
     }
 
     @Override
-    public boolean crearPizza(Pizza laPizza) throws PizzaExisteException {
+    public boolean crearPizza(Pizza laPizza) throws PizzaExisteException, PizzaIncompletaException {
         if(crearPizzaGateWay.buscarPizzaPorNombre(laPizza.getNombre()) == null)
             return this.crearPizzaGateWay.guardar(laPizza);
 

@@ -7,5 +7,5 @@ public interface IRepositorioCrearPizza {
 
     boolean guardar(Pizza nuevaPizza);
 
-    Pizza buscarPizzaPorNombre(String nombrePizza);
+    Pizza buscarPizzaPorNombre(String nombrePizza) throws PizzaIncompletaException;
 }
