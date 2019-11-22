@@ -19,7 +19,8 @@ public class CrearPedidoRepositorioImplementacion implements IRepositorioCrearPe
     @Override
     public boolean guardar(Pedido elPedido) {
         PedidoEntity pedidoEntity = new PedidoEntityMapper().mapeoCoreData(elPedido);
-        return crearPedidoCRUD.save(pedidoEntity).getIdPedido() != null;
+        boolean respuesta = crearPedidoCRUD.save(pedidoEntity).getIdPedido() != null;
+        return respuesta;
     }
 
     @Override
