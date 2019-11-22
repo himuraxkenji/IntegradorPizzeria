@@ -19,12 +19,15 @@ public class CrearPedidoRepositorioImplementacion implements IRepositorioCrearPe
     @Override
     public boolean guardar(Pedido elPedido) {
         PedidoEntity pedidoEntity = new PedidoEntityMapper().mapeoCoreData(elPedido);
-        return crearPedidoCRUD.save(pedidoEntity).getIdPedido() != null;
+        boolean respuesta = crearPedidoCRUD.save(pedidoEntity).getIdPedido() != null;
+        return respuesta;
     }
 
     @Override
     public Pedido buscarPedidoPorNumero(Integer numeroPedido) throws PedidoIncompletoException, PizzaIncompletaException {
-        Pedido pedidoBuscado = new PedidoEntityMapper().mapeoDataCore(crearPedidoCRUD.findByNumeroPedido(numeroPedido));
-        return pedidoBuscado;
+        PedidoEntity pedidoBuscado = this.crearPedidoCRUD.findByNumeroPedido(numeroPedido);
+        if(pedidoBuscado != null)
+            return new PedidoEntityMapper().mapeoDataCore(pedidoBuscado);
+        return null;
     }
 }

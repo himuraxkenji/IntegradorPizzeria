@@ -1,5 +1,6 @@
 package ar.edu.undec.pizzeriaboundaries.Service.ModeloService;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
@@ -13,6 +14,7 @@ public class PedidoDTO {
     @JsonProperty("cliente")
     private ClienteDTO elCliente;
     @JsonProperty("fecha")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime fecha;
     @JsonProperty("numero")
     private Integer numeroPedido;
