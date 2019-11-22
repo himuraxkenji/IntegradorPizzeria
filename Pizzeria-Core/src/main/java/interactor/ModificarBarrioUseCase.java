@@ -22,11 +22,9 @@ public class ModificarBarrioUseCase implements IModificarBarrioInput {
 	            return this.modificarBarrioRepo.actualizar(BarrioDatosNuevos);
 	        else if(BarrioAModificar.getIdBarrio() != BarrioDatosNuevos.getIdBarrio())
 	            throw new BarrioExisteException();
-	        else{
-	            if (BarrioAModificar.getNombre().equals(BarrioDatosNuevos.getNombre()))
-	                return this.modificarBarrioRepo.actualizar(BarrioDatosNuevos);
-	        }
-	        return false;
+	        else
+	        	return this.modificarBarrioRepo.actualizar(BarrioDatosNuevos);
+
 	    }
 
 
