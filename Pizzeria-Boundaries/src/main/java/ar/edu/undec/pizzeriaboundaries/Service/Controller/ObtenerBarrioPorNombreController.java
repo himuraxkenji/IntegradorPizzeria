@@ -21,7 +21,7 @@ public class ObtenerBarrioPorNombreController {
         this.obtenerBarrioPorNombreInput = obtenerBarrioPorNombreInput;
     }
 
-    @RequestMapping(value = "barrio/{nombre}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "barrio/nombre/{nombre}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<?> obtenerBarrioPorNombre(@PathVariable("nombre") String nombreBarrio) {
         try {
