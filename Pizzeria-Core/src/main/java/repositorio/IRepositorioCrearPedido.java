@@ -8,7 +8,7 @@ public interface IRepositorioCrearPedido {
 
     boolean guardar(Pedido elPedido);
 
-    Pedido buscarPedidoPorNumero(Integer numeroPedido) throws PedidoIncompletoException, PizzaIncompletaException;
+    Pedido buscarPedidoPorNumero(Integer numeroPedido) ;
 
 
 }

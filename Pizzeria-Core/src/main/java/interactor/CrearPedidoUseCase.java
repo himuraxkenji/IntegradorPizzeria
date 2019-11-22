@@ -16,12 +16,9 @@ public class CrearPedidoUseCase implements ICrearPedidoInput {
         this.CrearPedidoGateWay = crearPedidoGateWay;
     }
 
-    public boolean existePedido(Pedido elPedido) throws PedidoIncompletoException, PizzaIncompletaException {
-        return CrearPedidoGateWay.buscarPedidoPorNumero(elPedido.getNumeroPedido()) != null;
-    }
 
-    public boolean crearPedido(Pedido elPedido) throws PedidoExisteException, PedidoIncompletoException, PizzaIncompletaException {
-        if(!existePedido(elPedido)){
+    public boolean crearPedido(Pedido elPedido) throws PedidoExisteException{
+        if(CrearPedidoGateWay.buscarPedidoPorNumero(elPedido.getNumeroPedido()) == null){
             return this.CrearPedidoGateWay.guardar(elPedido);
         }
         throw new PedidoExisteException();

@@ -1,4 +1,7 @@
 package excepciones;
 
-public class PedidoExisteException extends Throwable {
+public class PedidoExisteException extends Exception {
+    public PedidoExisteException(){
+        super();
+    }
 }

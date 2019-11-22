@@ -1,6 +1,7 @@
 package ar.edu.undec.pizzeriaboundaries.Service.ServiceMapper;
 
 
+import ar.edu.undec.pizzeriaboundaries.Data.ModelosEntity.ClienteEntity;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.ClienteDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PedidoDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PizzaDTO;
@@ -17,8 +18,12 @@ import java.util.List;
 public class PedidoDTOMapper {
 
     public Pedido mapeoDTOCore(PedidoDTO pedidoDTO) throws PedidoIncompletoException {
-        Cliente cliente = new ClienteDTOMapper().mapeoDTOCore(pedidoDTO.getElCliente());
-        Collection<Pizza> losItems = new ArrayList<Pizza>();
+        ClienteDTO clienteDTO = pedidoDTO.getElCliente();
+        Cliente cliente = null;
+        if(clienteDTO != null)
+            cliente= new ClienteDTOMapper().mapeoDTOCore(clienteDTO);
+
+        List<Pizza> losItems = new ArrayList<Pizza>();
         for (PizzaDTO pizzaIterDTO : pedidoDTO.getItems()) {
             losItems.add(new PizzaDTOMapper().mapeoDTOCore(pizzaIterDTO));
         }

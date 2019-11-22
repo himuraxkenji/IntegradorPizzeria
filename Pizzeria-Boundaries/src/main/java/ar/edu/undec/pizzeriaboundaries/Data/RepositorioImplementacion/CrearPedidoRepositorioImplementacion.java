@@ -23,8 +23,11 @@ public class CrearPedidoRepositorioImplementacion implements IRepositorioCrearPe
     }
 
     @Override
-    public Pedido buscarPedidoPorNumero(Integer numeroPedido) throws PedidoIncompletoException, PizzaIncompletaException {
-        Pedido pedidoBuscado = new PedidoEntityMapper().mapeoDataCore(crearPedidoCRUD.findByNumeroPedido(numeroPedido));
-        return pedidoBuscado;
+    public Pedido buscarPedidoPorNumero(Integer numeroPedido)   {
+        PedidoEntity pedido = crearPedidoCRUD.findByNumeroPedido(numeroPedido);
+
+        if(pedido != null)
+            return new PedidoEntityMapper().mapeoDataCore(pedido);
+        return null;
     }
 }

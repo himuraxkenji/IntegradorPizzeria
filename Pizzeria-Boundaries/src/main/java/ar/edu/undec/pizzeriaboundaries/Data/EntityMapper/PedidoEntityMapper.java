@@ -9,7 +9,7 @@ import modelo.Pedido;
 import modelo.Pizza;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class PedidoEntityMapper {
 
@@ -29,14 +29,18 @@ public class PedidoEntityMapper {
     }
 
 
-    public Pedido mapeoDataCore(PedidoEntity pedidoEntity) throws PedidoIncompletoException, PizzaIncompletaException {
-        Collection<Pizza> losItems = new ArrayList<Pizza>();
+    public Pedido mapeoDataCore(PedidoEntity pedidoEntity) {
+        List<Pizza> losItems = new ArrayList<Pizza>();
         for (PizzaEntity pizzaIter : pedidoEntity.getItems()) {
             losItems.add(new PizzaEntityMapper().mapeoDataCore(pizzaIter));
         }
 
-
-        return Pedido.factoryPedido(pedidoEntity.getIdPedido(),new ClienteEntityMapper().mapeoDataCore(pedidoEntity.getElCliente()), pedidoEntity.getFecha(), losItems, pedidoEntity.getNumeroPedido());
+        try {
+            return Pedido.factoryPedido(pedidoEntity.getIdPedido(),new ClienteEntityMapper().mapeoDataCore(pedidoEntity.getElCliente()), pedidoEntity.getFecha(), losItems, pedidoEntity.getNumeroPedido());
+        } catch (PedidoIncompletoException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
