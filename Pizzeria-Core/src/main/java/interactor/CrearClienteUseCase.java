@@ -12,16 +12,13 @@ public class CrearClienteUseCase implements ICrearClienteInput {
     public CrearClienteUseCase(IRepositorioCrearCliente crearClienteGateway) {
        this.crearClienteGateway = crearClienteGateway;
     }
-
-    public boolean existeCliente(Cliente elCliente){
-        return crearClienteGateway.buscarClientePorDocumento(elCliente.getNombre()) != null;
-    }
+    
 
     public boolean crearCliente(Cliente elCliente) throws ClienteExisteException {
-        if(!existeCliente(elCliente)) {
+        if(crearClienteGateway.buscarClientePorDocumento(elCliente.getDocumento()) == null) {
             return this.crearClienteGateway.guardar(elCliente);
         }
-            throw new ClienteExisteException();
+        throw new ClienteExisteException();
 
     }
 
