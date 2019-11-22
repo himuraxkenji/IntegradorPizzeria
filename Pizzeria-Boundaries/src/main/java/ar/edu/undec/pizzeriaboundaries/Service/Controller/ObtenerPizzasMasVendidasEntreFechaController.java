@@ -28,22 +28,18 @@ public class ObtenerPizzasMasVendidasEntreFechaController {
         this.obtenerPizzasMasVendidasEntreFechasInput = obtenerPizzasMasVendidasEntreFechasInput;
     }
 
-    @RequestMapping(value = "pizza_Integer", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "pizzasMasVendidas", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<?> obtenerPizzasMasVendidasEntreFechas(@RequestBody LocalDate fechaInicio, @RequestBody LocalDate fechaFin) {
+    public ResponseEntity<?> obtenerPizzasMasVendidasEntreFechas(@PathVariable LocalDate fechaInicio, @PathVariable LocalDate fechaFin) {
         try {
+
             HashMap<Pizza, Integer> lasPizzasMap = this.obtenerPizzasMasVendidasEntreFechasInput.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin);
 
-            if (!lasPizzasMap.isEmpty()) {
+            if (lasPizzasMap.isEmpty()) return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+                    return ResponseEntity.status(HttpStatus.OK).body(lasPizzasMap);
 
-                return ResponseEntity.status(HttpStatus.OK).body(lasPizzasMap);
-            } else {
-
-
-                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
         } catch(Exception | PedidoIncompletoException | PedidosNoEncontradosException ex){
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(null);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 }

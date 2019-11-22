@@ -1,8 +1,8 @@
 package ar.edu.undec.pizzeriaboundaries.Data.ModelosEntity;
 
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -20,7 +20,9 @@ public class PedidoEntity {
     @JoinColumn(name= "id_Cliente")
     private ClienteEntity elCliente;
 
+
     private LocalDateTime fecha;
+
     private Integer numeroPedido;
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)

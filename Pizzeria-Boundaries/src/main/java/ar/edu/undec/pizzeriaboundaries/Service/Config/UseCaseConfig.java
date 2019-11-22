@@ -61,7 +61,7 @@ public class UseCaseConfig {
 
 
     @Bean
-    public CrearPizzaUseCase crearPizzaUseCase(){ return new CrearPizzaUseCase((iRepositorioCrearPizza));}
+    public CrearPizzaUseCase crearPizzaUseCase(){ return new CrearPizzaUseCase(iRepositorioCrearPizza);}
 
     @Bean
     public ModificarClienteUseCase modificarClienteUseCase(){ return new ModificarClienteUseCase(iRepositorioModificarCliente); }

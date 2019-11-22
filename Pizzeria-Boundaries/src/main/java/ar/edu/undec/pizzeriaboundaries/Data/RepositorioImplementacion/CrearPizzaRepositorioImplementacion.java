@@ -10,23 +10,22 @@ import org.springframework.stereotype.Service;
 import repositorio.IRepositorioCrearPizza;
 
 @Service
-
 public class CrearPizzaRepositorioImplementacion implements IRepositorioCrearPizza {
 
     @Autowired
-    ICrearPizzaCRUD crearPizzaCRUD;
+    private ICrearPizzaCRUD crearPizzaCRUD;
 
     @Override
     public boolean guardar(Pizza nuevaPizza) {
         PizzaEntity pizzaEntity = new PizzaEntityMapper().mapeoCoreData(nuevaPizza);
-        return crearPizzaCRUD.save(pizzaEntity) != null;
+        boolean respuesta = crearPizzaCRUD.save(pizzaEntity) != null;
+        return respuesta;
     }
 
     @Override
     public Pizza buscarPizzaPorNombre(String nombrePizza) throws PizzaIncompletaException {
-        Pizza pizzaBuscada = new PizzaEntityMapper().mapeoDataCore(crearPizzaCRUD.findByNombre(nombrePizza));
-        if(pizzaBuscada!= null)
-            return pizzaBuscada;
+
+
         return null;
     }
 }

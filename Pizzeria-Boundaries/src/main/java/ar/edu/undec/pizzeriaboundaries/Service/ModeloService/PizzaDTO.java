@@ -7,7 +7,6 @@ public class PizzaDTO {
     @JsonProperty("id")
     private Integer idPizza;
 
-
     @JsonProperty("nombre")
     private String nombre;
 
@@ -18,7 +17,10 @@ public class PizzaDTO {
     private Integer tiempoPreparacion;
 
 
-    public PizzaDTO(@JsonProperty("id") Integer id, @JsonProperty("nombre") String nombre, @JsonProperty("precio") float precio, @JsonProperty("tiempoPreparacion") Integer tiempoPreparacion){
+    public PizzaDTO(@JsonProperty("id") Integer id,
+                    @JsonProperty("nombre") String nombre,
+                    @JsonProperty("precio") float precio,
+                    @JsonProperty("tiempoPreparacion") Integer tiempoPreparacion){
 
         this.idPizza = id;
         this.nombre = nombre;

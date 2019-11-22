@@ -9,6 +9,7 @@ import excepciones.PizzaExisteException;
 import excepciones.PizzaIncompletaException;
 import input.ICrearPizzaInput;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ public class CrearPizzaController {
     private ICrearPizzaInput iCrearPizzaInput;
 
     public CrearPizzaController(ICrearPizzaInput iCrearPizzaInput) {
+
         this.iCrearPizzaInput = iCrearPizzaInput;
     }
 
@@ -26,10 +28,9 @@ public class CrearPizzaController {
     @ResponseBody
     public ResponseEntity<?> crearPizza(@RequestBody PizzaDTO pizzaDTO)  {
         try {
-
             boolean respuesta = this.iCrearPizzaInput.crearPizza(new PizzaDTOMapper().mapeoDTOCore(pizzaDTO));
             if (respuesta) return ResponseEntity.status(HttpStatus.OK).body(true);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }catch (PizzaIncompletaException | PizzaExisteException ex ) {
             ex.printStackTrace();
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(false);

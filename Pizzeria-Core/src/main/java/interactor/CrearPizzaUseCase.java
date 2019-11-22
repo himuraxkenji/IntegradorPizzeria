@@ -11,6 +11,7 @@ public class CrearPizzaUseCase implements ICrearPizzaInput {
     private IRepositorioCrearPizza crearPizzaGateWay;
 
     public CrearPizzaUseCase(IRepositorioCrearPizza crearPizzaGateWay) {
+
         this.crearPizzaGateWay = crearPizzaGateWay;
     }
 

@@ -6,6 +6,7 @@ import excepciones.PedidoIncompletoException;
 import input.IObtenerPedidosInput;
 import modelo.Pedido;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,16 +24,16 @@ public class ObtenerPedidosController {
     }
 
 
-    @RequestMapping(value = "pedido", method = RequestMethod.GET)
+    @RequestMapping(value = "pedidos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<?> obtenerPedidos() {
         try{
             List<Pedido> resultado = this.obtenerPedidosInput.obtenerPedidos();
-            if(resultado.size() > 0)
+            if(resultado.isEmpty()) ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
                 return ResponseEntity.status(HttpStatus.OK).body(resultado);
-            else return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
         }catch(Exception | PedidoIncompletoException ex){
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(null);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
