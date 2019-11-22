@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @RequestMapping("/")
@@ -42,9 +43,15 @@ public class ObtenerPizzasMasVendidasEntreFechaController {
         try {
 
             HashMap<Pizza, Integer> lasPizzasMap = this.obtenerPizzasMasVendidasEntreFechasInput.obtenerPizzasMasVendidasEntreFechas(fechaInicio, fechaFin);
+            ArrayList<Pizza> losNombres = new ArrayList(lasPizzasMap.keySet());
+            ArrayList<Integer> laCantidad = new ArrayList(lasPizzasMap.values());
+            HashMap<String, Integer> laListaRanking = new HashMap<>();
+            for(int i=0; i<laCantidad.size();++i){
+                laListaRanking.put(losNombres.get(i).getNombre(), laCantidad.get(i));
+            }
 
             if (lasPizzasMap.isEmpty()) return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
-                    return ResponseEntity.status(HttpStatus.OK).body(lasPizzasMap);
+                    return ResponseEntity.status(HttpStatus.OK).body(laListaRanking);
 
         } catch(Exception | PedidoIncompletoException | PedidosNoEncontradosException ex){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
