@@ -2,7 +2,7 @@ package interactorUnitTest;
 
 import Mockito.MockitoExtension;
 import excepciones.*;
-import interactor.ObtenerPedidoPorClienteYFecha;
+import interactor.ObtenerPedidoPorClienteYFechaUseCase;
 import modelo.Barrio;
 import modelo.Cliente;
 import modelo.Pedido;
@@ -48,8 +48,8 @@ public class ObtenerPedidoPorClienteYFechaUnitTest {
         resultado.add(primerPedido);
         resultado.add(segundoPedido);
         when(repositorio.obtenerPedidoPorClienteYFecha(cliente, LocalDateTime.of(2019, 11, 8,0,0))).thenReturn(resultado);
-        ObtenerPedidoPorClienteYFecha caso = new ObtenerPedidoPorClienteYFecha(repositorio);
-        assertEquals(resultado, caso.obtenerPedidoPorClienteYFecha(cliente, LocalDateTime.of(2019, 11, 8,0,0)));
+        ObtenerPedidoPorClienteYFechaUseCase caso = new ObtenerPedidoPorClienteYFechaUseCase(repositorio);
+        assertEquals(resultado, caso.obtenerPedidoPorClienteYfecha(cliente, LocalDateTime.of(2019, 11, 8,0,0)));
     }
 
     @Test
@@ -57,8 +57,8 @@ public class ObtenerPedidoPorClienteYFechaUnitTest {
         Barrio barrio = Barrio.factoryBarrio(2, "Nueva Italia");
         Cliente cliente = Cliente.factoryCliente(1,"Federico", "San Juan 570", barrio,
                 "37492933");
-        ObtenerPedidoPorClienteYFecha caso = new ObtenerPedidoPorClienteYFecha(repositorio);
-        Assertions.assertThrows(FechaIncorrectaException.class, ()-> caso.obtenerPedidoPorClienteYFecha(cliente,
+        ObtenerPedidoPorClienteYFechaUseCase caso = new ObtenerPedidoPorClienteYFechaUseCase(repositorio);
+        Assertions.assertThrows(FechaIncorrectaException.class, ()-> caso.obtenerPedidoPorClienteYfecha(cliente,
                 LocalDateTime.of(2020, 01,01,0,0)));
     }
 

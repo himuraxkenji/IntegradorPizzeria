@@ -7,7 +7,9 @@ import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PedidoDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PizzaDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ServiceMapper.ClienteDTOMapper;
 import ar.edu.undec.pizzeriaboundaries.Service.ServiceMapper.PedidoDTOMapper;
+import excepciones.FechaIncorrectaException;
 import excepciones.PedidoIncompletoException;
+import excepciones.PizzaIncompletaException;
 import input.IRepositorioObtenerPedidoPorClienteYFechaImput;
 import modelo.Cliente;
 import modelo.Pedido;
@@ -47,7 +49,7 @@ public class ObtenerPedidoPorClienteYFechaServiceIT {
 
 
     @Test
-    public void obtenerPedidoPorClienteYFecha_ClienteYFechasCorrectos_Devuelve200() throws PedidoIncompletoException {
+    public void obtenerPedidoPorClienteYFecha_ClienteYFechasCorrectos_Devuelve200() throws PedidoIncompletoException, FechaIncorrectaException, PizzaIncompletaException {
         BarrioDTO barrio = new BarrioDTO(1,"Mayo");
         ClienteDTO cliente = new ClienteDTO(1,"Daniel","San Juan 570","37492933",barrio);
         PizzaDTO comun = new PizzaDTO(1,"Comun",150.0f,30);

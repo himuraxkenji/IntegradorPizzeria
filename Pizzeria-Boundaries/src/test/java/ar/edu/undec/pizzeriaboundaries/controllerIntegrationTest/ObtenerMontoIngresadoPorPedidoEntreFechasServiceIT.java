@@ -5,6 +5,7 @@ import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.BarrioDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.ClienteDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PedidoDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PizzaDTO;
+import excepciones.FechaIncorrectaException;
 import input.IRepositorioObtenerMontoIngresadoPorPedidoEntreFechasImput;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,10 +25,10 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class ObtenerMontoIngresadoPorPedidoEntreFechasServiceIT {
     @Mock
-    IRepositorioObtenerMontoIngresadoPorPedidoEntreFechasImput repositorio;
+    IRepositorioObtenerMontoIngresadoPorPedidoEntreFechasImput iRepositorioObtenerMontoIngresadoPorPedidoEntreFechasImput;
 
     @Test
-    public void obtenerMontoIngresadoPorPedidoEntreFechas_FechasCorrectas_Devuelve200(){
+    public void obtenerMontoIngresadoPorPedidoEntreFechas_FechasCorrectas_Devuelve200() throws FechaIncorrectaException {
         BarrioDTO barrio = new BarrioDTO(1,"Mayo");
         ClienteDTO cliente = new ClienteDTO(1,"Daniel","San Juan 570","37492933",barrio);
         PizzaDTO comun = new PizzaDTO(1,"Comun",150.0f,30);
@@ -40,8 +41,8 @@ public class ObtenerMontoIngresadoPorPedidoEntreFechasServiceIT {
         pedidasDos.add(especial);
         PedidoDTO primerPedido = new PedidoDTO(1,cliente, LocalDateTime.of(2019,11,18,22,0),pedidasUno,2);
         PedidoDTO segundoPedido = new PedidoDTO(2,cliente, LocalDateTime.of(2019,11,19,22,0),pedidasDos,2);
-        when(repositorio.obtenerMontoIngresadoPorPedidoEntreFechas(LocalDate.of(2019,11,17),LocalDate.of(2019,11,20))).thenReturn(650.00);
-        ObtenerMontoIngresadoPorPedidoEntreFechasController controlador = new ObtenerMontoIngresadoPorPedidoEntreFechasController(repositorio);
+        when(iRepositorioObtenerMontoIngresadoPorPedidoEntreFechasImput.obtenerMontoIngresadoPorPedidoEntreFechas(LocalDate.of(2019,11,17),LocalDate.of(2019,11,20))).thenReturn(650.00);
+        ObtenerMontoIngresadoPorPedidoEntreFechasController controlador = new ObtenerMontoIngresadoPorPedidoEntreFechasController(iRepositorioObtenerMontoIngresadoPorPedidoEntreFechasImput);
         assertEquals(org.apache.http.HttpStatus.SC_OK,controlador.obtenerMontoIngresadoPorPedidoEntreFechasImput(LocalDate.of(2019,11,17),LocalDate.of(2019,11,20)).getStatusCodeValue());
 
     }

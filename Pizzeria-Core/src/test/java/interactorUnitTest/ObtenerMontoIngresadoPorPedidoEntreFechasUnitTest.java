@@ -2,7 +2,7 @@ package interactorUnitTest;
 
 import Mockito.MockitoExtension;
 import excepciones.*;
-import interactor.ObtenerMontoIngresadoPorPedidoEntreFechas;
+import interactor.ObtenerMontoIngresadoPorPedidoEntreFechasUseCase;
 import modelo.Barrio;
 import modelo.Cliente;
 import modelo.Pedido;
@@ -50,14 +50,14 @@ public class ObtenerMontoIngresadoPorPedidoEntreFechasUnitTest {
         Pedido cuartoPedido = Pedido.factoryPedido(4,primerCliente, LocalDateTime.of(2019,11,19,21,30),pizzasCuartoPedido,1);
 
         when(repositorio.obtenerMontoIngresadoPorPedidoEntreFechas(LocalDate.of(2019,11,15),LocalDate.of(2019,11,19))).thenReturn(850.0);
-        ObtenerMontoIngresadoPorPedidoEntreFechas caso = new ObtenerMontoIngresadoPorPedidoEntreFechas(repositorio);
-        assertEquals(850.0,caso.obtenerMontoIngresadoPorPedidosEntreFechas(LocalDate.of(2019,11,15),LocalDate.of(2019,11,19)));
+        ObtenerMontoIngresadoPorPedidoEntreFechasUseCase caso = new ObtenerMontoIngresadoPorPedidoEntreFechasUseCase(repositorio);
+        assertEquals(850.0,caso.obtenerMontoIngresadoPorPedidoEntreFechas(LocalDate.of(2019,11,15),LocalDate.of(2019,11,19)));
     }
 
     @Test
     public void obtenerMontoIngresadoPorPedidoEntreFechas_FechaInicioIncorrecta_ArrojarExcepcion(){
-        ObtenerMontoIngresadoPorPedidoEntreFechas caso = new ObtenerMontoIngresadoPorPedidoEntreFechas(repositorio);
-        Assertions.assertThrows(FechaIncorrectaException.class, ()-> caso.obtenerMontoIngresadoPorPedidosEntreFechas(
+        ObtenerMontoIngresadoPorPedidoEntreFechasUseCase caso = new ObtenerMontoIngresadoPorPedidoEntreFechasUseCase(repositorio);
+        Assertions.assertThrows(FechaIncorrectaException.class, ()-> caso.obtenerMontoIngresadoPorPedidoEntreFechas(
                 LocalDate.of(2019,11,23),LocalDate.of(2019,11,20)));
     }
 }

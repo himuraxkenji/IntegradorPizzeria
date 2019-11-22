@@ -50,6 +50,12 @@ public class UseCaseConfig {
     @Autowired
     private IRepositorioModificarPedido modificarPedidoRepo;
 
+    @Autowired
+    private IRepositorioObtenerPedidoPorClienteYFecha iRepositorioObtenerPedidoPorClienteYFecha;
+
+    @Autowired
+    private IObtenerMontoIngresadoPorPedidoEntreFechas iObtenerMontoIngresadoPorPedidoEntreFechas;
+
     @Bean
     public ObtenerPizzasMasVendidasEntreFechasUseCase obtenerPizzasMasVendidasEntreFechasUseCase() { return new ObtenerPizzasMasVendidasEntreFechasUseCase(iRepositorioObtenerPedidos);}
 
@@ -98,5 +104,15 @@ public class UseCaseConfig {
     @Bean
     public ModificarPedidoUseCase modificarPedidoUseCase(){
         return new ModificarPedidoUseCase(modificarPedidoRepo);
+    }
+
+    @Bean
+    public ObtenerPedidoPorClienteYFechaUseCase obtenerPedidoPorClienteYFechaUseCase(){
+        return new  ObtenerPedidoPorClienteYFechaUseCase(iRepositorioObtenerPedidoPorClienteYFecha);
+    }
+
+    @Bean
+    public ObtenerMontoIngresadoPorPedidoEntreFechasUseCase obtenerMontoIngresadoPorPedidoEntreFechasUseCase(){
+        return new ObtenerMontoIngresadoPorPedidoEntreFechasUseCase(iObtenerMontoIngresadoPorPedidoEntreFechas);
     }
 }
