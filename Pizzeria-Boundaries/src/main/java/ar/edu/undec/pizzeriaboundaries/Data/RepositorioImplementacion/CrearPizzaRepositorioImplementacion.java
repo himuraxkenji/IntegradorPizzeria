@@ -18,14 +18,14 @@ public class CrearPizzaRepositorioImplementacion implements IRepositorioCrearPiz
     @Override
     public boolean guardar(Pizza nuevaPizza) {
         PizzaEntity pizzaEntity = new PizzaEntityMapper().mapeoCoreData(nuevaPizza);
-        boolean respuesta = crearPizzaCRUD.save(pizzaEntity) != null;
-        return respuesta;
+        return crearPizzaCRUD.save(pizzaEntity) != null;
     }
 
     @Override
     public Pizza buscarPizzaPorNombre(String nombrePizza) throws PizzaIncompletaException {
-
-
+        Pizza pizzaBuscada = new PizzaEntityMapper().mapeoDataCore(crearPizzaCRUD.findByNombre(nombrePizza));
+        if(pizzaBuscada!= null)
+            return pizzaBuscada;
         return null;
     }
 }

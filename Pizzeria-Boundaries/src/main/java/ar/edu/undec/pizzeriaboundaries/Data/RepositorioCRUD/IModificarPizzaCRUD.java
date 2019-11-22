@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface IModificarPizzaCRUD extends CrudRepository<PizzaEntity, Integer> {
 
-    PizzaEntity findByNombre(String nombrePizza);
+    PizzaEntity findByNombreEquals(String nombrePizza);
 
 }

@@ -20,12 +20,11 @@ public class ModificarClienteUseCase implements IModificarClienteInput {
 
         if(clienteAModificar == null )
             return this.modificarClienteRepo.actualizar(cliente);
-        else{
-            if(clienteAModificar.getIdCliente() != cliente.getIdCliente())
-                throw new ClienteExisteException();
-            else{
-                return this.modificarClienteRepo.actualizar(cliente);
-            }
-        }
+        else if(clienteAModificar.getIdCliente() != cliente.getIdCliente())
+            throw new ClienteExisteException();
+        else
+            return this.modificarClienteRepo.actualizar(cliente);
+
+
     }
 }

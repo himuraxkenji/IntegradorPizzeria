@@ -26,6 +26,9 @@ public class CrearClienteRepoImpl implements IRepositorioCrearCliente {
 
     @Override
     public Cliente buscarClientePorDocumento(String documentoCliente) {
+        ClienteEntity clienteEntity = this.iCrearClienteCRUD.findByDocumento(documentoCliente);
+        if(clienteEntity != null)
+            return new ClienteEntityMapper().mapeoDataCore(clienteEntity);
         return null;
     }
 }

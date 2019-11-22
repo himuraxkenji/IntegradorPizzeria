@@ -8,7 +8,7 @@ import java.util.Collection;
 
 
 @Entity
-@Table(name = "Pedidos")
+@Table(name = "pedidos")
 @SequenceGenerator(name = "seq_pedidos", sequenceName = "seq_pedidos", initialValue = 1, allocationSize = 1)
 public class PedidoEntity {
 

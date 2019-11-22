@@ -1,12 +1,8 @@
 package ar.edu.undec.pizzeriaboundaries.Service.Controller;
 
-import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.ClienteDTO;
 import ar.edu.undec.pizzeriaboundaries.Service.ModeloService.PizzaDTO;
-import ar.edu.undec.pizzeriaboundaries.Service.ServiceMapper.ClienteDTOMapper;
 import ar.edu.undec.pizzeriaboundaries.Service.ServiceMapper.PizzaDTOMapper;
-import excepciones.ClienteExisteException;
 import excepciones.PizzaExisteException;
-import excepciones.PizzaIncompletaException;
 import input.ICrearPizzaInput;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,7 +26,7 @@ public class CrearPizzaController {
         try {
             boolean respuesta = this.iCrearPizzaInput.crearPizza(new PizzaDTOMapper().mapeoDTOCore(pizzaDTO));
             if (respuesta) return ResponseEntity.status(HttpStatus.OK).body(true);
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }catch (PizzaIncompletaException | PizzaExisteException ex ) {
             ex.printStackTrace();
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(false);

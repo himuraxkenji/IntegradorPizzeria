@@ -16,9 +16,11 @@ public class ModificarPizzaRepoImpl implements IRepositorioModificarPizza {
     IModificarPizzaCRUD iModificarPizzaCRUD;
 
     @Override
-    public Pizza findByNombrePizza(String nombrePizza) throws PizzaIncompletaException {
-
-        return new PizzaEntityMapper().mapeoDataCore(iModificarPizzaCRUD.findByNombre(nombrePizza));
+    public Pizza findByNombrePizza(String nombrePizza) {
+        PizzaEntity pizzaEntity = iModificarPizzaCRUD.findByNombreEquals(nombrePizza);
+        if(pizzaEntity != null)
+            return new PizzaEntityMapper().mapeoDataCore(pizzaEntity);
+        return  null;
     }
 
     @Override
@@ -26,6 +28,6 @@ public class ModificarPizzaRepoImpl implements IRepositorioModificarPizza {
 
         PizzaEntity pizzaEntity = new PizzaEntityMapper().mapeoCoreData(pizza);
 
-        return iModificarPizzaCRUD.save(pizzaEntity) != null;
+        return iModificarPizzaCRUD.save(pizzaEntity).getIdPizza() != null;
     }
 }

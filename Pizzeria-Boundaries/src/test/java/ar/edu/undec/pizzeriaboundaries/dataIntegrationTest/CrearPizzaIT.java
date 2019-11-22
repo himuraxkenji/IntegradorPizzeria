@@ -15,18 +15,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@SqlGroup({
+        @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:crearPizzaAntes.sql")
+})
 public class CrearPizzaIT {
 
     @Autowired
     CrearPizzaRepositorioImplementacion CrearPizzaRepo;
 
-    @SqlGroup({
-            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:crearPizzaAntes.sql")
-    })
+
 
     @Test
     public void CrearPizza_PizzaNoExiste_GuardadoCorrecto() throws PizzaIncompletaException {
-        Pizza laPizza=Pizza.factoryPizza(1,"Napolitana",250.00f,15);
+        Pizza laPizza=Pizza.factoryPizza(null,"Napolitana",250.00f,15);
         boolean resultado = CrearPizzaRepo.guardar(laPizza);
         assertTrue(resultado);
     }

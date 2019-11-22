@@ -18,15 +18,16 @@ public class ActualizarBarrioRepoImpl implements IRepositorioModificarBarrio {
 
     @Override
     public Barrio findByNombre(String nombre) {
-        Barrio barrioAModificar = new BarrioEntityMapper().mapeoDataCore((BarrioEntity) modificarBarrioCRUD);
-        return barrioAModificar;
+        BarrioEntity barrioAModificar = modificarBarrioCRUD.findByNombre(nombre);
+        if(barrioAModificar == null)
+            return null;
+        return new BarrioEntityMapper().mapeoDataCore(barrioAModificar);
     }
 
     @Override
     public Boolean actualizar(Barrio barrio) {
         BarrioEntity barrioEntity = new BarrioEntityMapper().mapeoCoreData(barrio);
-        boolean result= modificarBarrioCRUD.save(barrioEntity) != null;
-        return result;
+        return modificarBarrioCRUD.save(barrioEntity) != null;
     }
 
 

@@ -4,8 +4,7 @@ package ar.edu.undec.pizzeriaboundaries.Data.ModelosEntity;
 import javax.persistence.*;
 
 
-@Entity
-@Table(name="Pizzas")
+@Entity(name = "pizzas")
 @SequenceGenerator(name= "seq_pizzas", sequenceName = "seq_pizzas", initialValue = 1, allocationSize =1 )
 public class PizzaEntity {
 

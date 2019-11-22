@@ -5,7 +5,7 @@ import modelo.Pizza;
 
 public interface IRepositorioModificarPizza {
 
-    Pizza findByNombrePizza(String nombrePizza) throws PizzaIncompletaException;
+    Pizza findByNombrePizza(String nombrePizza);
 
     boolean actualizarPizza(Pizza pizza);
 

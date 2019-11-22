@@ -23,7 +23,7 @@ public class CrearPizzaUnitTest {
 
     @Test
     public void CrearPizza_PizzaNoExiste_GuardadoCorrecto() throws PizzaIncompletaException, PizzaExisteException {
-        Pizza laPizza=Pizza.factoryPizza(1,"Napolitana",250.00f,15);
+        Pizza laPizza=Pizza.factoryPizza(null,"Napolitana",250.00f,15);
         when(CrearPizzaGateway.guardar(laPizza)).thenReturn(true);
         CrearPizzaUseCase crearPizzaUseCase = new CrearPizzaUseCase(CrearPizzaGateway);
         boolean resultado = crearPizzaUseCase.crearPizza(laPizza);
