@@ -20,8 +20,8 @@ public class Cliente {
     }
 
     public static Cliente factoryCliente(Integer idCliente, String nombre, String direccion, Barrio elBarrio, String documento) throws ClienteIncompletoException {
-        if(idCliente== null || nombre == null || nombre =="" || direccion == null || direccion == "" ||
-                elBarrio==null || documento ==null || documento==""){
+        if(nombre == null || nombre.length() == 0 || direccion == null || direccion.length() ==0 ||
+                elBarrio==null || documento ==null || documento.length() == 0 ){
             throw new ClienteIncompletoException();
         }else{
             return new Cliente(idCliente, nombre, direccion, elBarrio, documento);
